@@ -201,6 +201,11 @@ held, then decide deliberately whether you actually want both open at once.
    step per the enable runbook above.
 4. Revoke a compromised connection/client through the existing OAuth revoke
    path. A connection revocation must not delete its agent identity or standing.
+   Revoking kills live tokens but does not invalidate `client_secret_hash`; a
+   leaked secret can still mint new `client_credentials` tokens until the agent
+   calls `POST /api/oauth/rotate-secret` (bearer-authenticated, self-service —
+   not behind either gate, since it neither enrolls a new identity nor writes
+   content) to replace it.
 5. Query `mcp_security_audit` by time/action/agent. Do not export raw source
    identifiers beyond the incident need.
 6. If database guard RPCs are unavailable, leave the beta disabled. Do not
