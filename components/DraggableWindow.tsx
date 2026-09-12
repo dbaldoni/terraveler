@@ -35,6 +35,7 @@ export default function DraggableWindow({
   const [pos, setPos] = useState<{ left: number; top: number } | null>(null);
   const [minimized, setMinimized] = useState(false);
   const drag = useRef<{ dx: number; dy: number } | null>(null);
+  const phone = useLayoutMode() === "phone";
 
   function parentRect(): DOMRect | null {
     const parent = (ref.current?.offsetParent as HTMLElement | null) ?? null;
@@ -43,7 +44,7 @@ export default function DraggableWindow({
 
   function onPointerDown(e: RPointerEvent<HTMLDivElement>) {
     if ((e.target as HTMLElement).closest(".win-btn")) return; // let controls click
-    if (window.innerWidth <= 680) return; // mobile: fixed bottom sheet, no dragging
+    if (phone) return; // phone: full-page panel, no dragging
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -81,7 +82,6 @@ export default function DraggableWindow({
      inline style beats the stylesheet and the old rule needed six !important
      to fight the very component that wrote them. Withholding is why
      useLayoutMode exists — a different tree, not a different look. */
-  const phone = useLayoutMode() === "phone";
   const style: CSSProperties = phone
     ? {}
     : pos

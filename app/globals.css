@@ -1777,7 +1777,7 @@ button.vt-seg:focus-visible { outline: 2px solid var(--brass); outline-offset: 2
   pointer-events: auto !important;
 }
 @media (hover: hover) {
-  .map-atlas-door:hover { background: var(--accent-deep); }
+  .map-atlas-door:hover { background: var(--accent); color: var(--parchment); }
 }
 .map-atlas-door:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
 /* On the map the .wordmark class sits on the anchor, which wraps the tagline
@@ -1861,7 +1861,7 @@ button.vt-seg:focus-visible { outline: 2px solid var(--brass); outline-offset: 2
 .lens-rail .lens-btn { color: var(--ink-soft); }
 @media (hover: hover) {
   .cart-emblem:hover,
-  .tr-btn:hover { background: var(--parchment-deep); }
+  .tr-btn:hover { background: var(--accent); color: var(--parchment); }
 }
 /* rgba(127, 38, 55, …) was --accent written out by hand, which is why the
    Moon's instruments kept an Age-of-Sail wine tint. Mixed from the token now,
@@ -1927,7 +1927,7 @@ button.vt-seg:focus-visible { outline: 2px solid var(--brass); outline-offset: 2
   .tr-btn { width: var(--tap-min); height: var(--tap-min); }
 }
 @media (hover: hover) {
-  .tr-btn:hover { background: var(--parchment-deep); }
+  .tr-btn:hover { background: var(--accent); color: var(--parchment); }
 }
 .tr-menu {
   position: absolute;
@@ -1990,7 +1990,7 @@ button.vt-seg:focus-visible { outline: 2px solid var(--brass); outline-offset: 2
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
+  z-index: 11;
   width: min(560px, 44vw);
   padding: 6px 12px;
   background: rgba(var(--paper-rgb), 0.82);
