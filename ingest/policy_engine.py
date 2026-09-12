@@ -72,6 +72,8 @@ class VerifiedEvidence:
     canonical_host: str = ""
     collection_identifier: str = ""
     
+    reverification_generation: int = 0 # Explicit Staleness Generation
+    
     # Explicit deterministic policy facts for REJECT/incompatibility
     policy_incompatible: bool = False
     incompatibility_codes: List[str] = field(default_factory=list)
@@ -230,6 +232,7 @@ def produce_verified_evidence(assessment_dict: dict, assertions: List[VerifierAs
         assessment_id=assessment_dict.get("id", 0),
         verified_at=datetime.datetime.now(datetime.timezone.utc),
         verifier_version="1.0",
+        reverification_generation=assessment_dict.get("reverification_generation", 0),
         
         subject_type=assessment_dict.get("subject_type", "proposal"),
         subject_id=assessment_dict.get("subject_id", 0),
@@ -359,6 +362,7 @@ def _build_eval(decision_outcome: str, trust_mode: Optional[str], rule_id: str,
         "verifier_version": evidence.verifier_version,
         "policy_version": policy_version,
         "rule_id": rule_id,
+        "reverification_generation": evidence.reverification_generation,
         
         "institution_identity_verified": evidence.institution_identity_verified,
         "endpoint_identity_verified": evidence.endpoint_identity_verified,
@@ -405,14 +409,15 @@ def persist_source_policy_evaluation(cur, verified_evidence_id: int) -> int:
     Reconstructs VerifiedEvidence from base tables, runs the deterministic policy engine,
     canonicalizes the result, computes the evaluation hash, and inserts the immutable record.
     """
-    # 1. Fetch verified evidence facts (including verified_at to guarantee absolute reproducibility!)
+    # 1. Fetch verified evidence facts (including verified_at and reverification_generation!)
     cur.execute(
         "SELECT id, assessment_id, proposal_id, subject_type, subject_id, "
         "       verified_at, verifier_version, institution_identity_verified, endpoint_identity_verified, "
         "       rights_statement_retrieved, rights_statement_hash_matches, rights_verified, "
         "       rights_class, rights_identifier, rights_uri, scope_verified, scope_type, "
         "       scope_identifier, access_verified, verification_strategy, policy_incompatible, "
-        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier "
+        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier, "
+        "       reverification_generation "
         "FROM source_verified_evidence "
         "WHERE id = %s",
         (verified_evidence_id,)
@@ -428,6 +433,7 @@ def persist_source_policy_evaluation(cur, verified_evidence_id: int) -> int:
         verifier_version=row["verifier_version"],
         subject_type=row["subject_type"],
         subject_id=row["subject_id"],
+        reverification_generation=row["reverification_generation"],
         institution_identity_verified=row["institution_identity_verified"],
         endpoint_identity_verified=row["endpoint_identity_verified"],
         rights_statement_retrieved=row["rights_statement_retrieved"],
@@ -459,16 +465,17 @@ def persist_source_policy_evaluation(cur, verified_evidence_id: int) -> int:
     # 4. Insert into immutable evaluations table
     cur.execute(
         "INSERT INTO source_policy_evaluations "
-        "(verified_evidence_id, subject_type, subject_id, "
+        "(verified_evidence_id, subject_type, subject_id, reverification_generation, "
         " decision_outcome, trust_mode, rule_id, reason_codes, blocking_conditions, "
         " policy_version, verification_version, evidence_hash, "
         " evaluation_snapshot, evaluation_hash) "
-        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
+        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
         "RETURNING id",
         (
             verified_evidence_id,
             evidence.subject_type,
             evidence.subject_id,
+            evidence.reverification_generation,
             evaluation.decision_outcome,
             evaluation.trust_mode,
             evaluation.rule_id,
@@ -637,7 +644,8 @@ def persist_source_drift_evaluation(cur, reverification_id: int, prev_evidence_i
         "       rights_statement_retrieved, rights_statement_hash_matches, rights_verified, "
         "       rights_class, rights_identifier, rights_uri, scope_verified, scope_type, "
         "       scope_identifier, access_verified, verification_strategy, policy_incompatible, "
-        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier "
+        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier, "
+        "       reverification_generation "
         "FROM source_verified_evidence WHERE id = %s",
         (prev_evidence_id,)
     )
@@ -651,6 +659,7 @@ def persist_source_drift_evaluation(cur, reverification_id: int, prev_evidence_i
         verifier_version=row_prev["verifier_version"],
         subject_type=row_prev["subject_type"],
         subject_id=row_prev["subject_id"],
+        reverification_generation=row_prev["reverification_generation"],
         institution_identity_verified=row_prev["institution_identity_verified"],
         endpoint_identity_verified=row_prev["endpoint_identity_verified"],
         rights_statement_retrieved=row_prev["rights_statement_retrieved"],
@@ -679,7 +688,8 @@ def persist_source_drift_evaluation(cur, reverification_id: int, prev_evidence_i
         "       rights_statement_retrieved, rights_statement_hash_matches, rights_verified, "
         "       rights_class, rights_identifier, rights_uri, scope_verified, scope_type, "
         "       scope_identifier, access_verified, verification_strategy, policy_incompatible, "
-        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier "
+        "       incompatibility_codes, conflicts, evidence_sources, canonical_host, collection_identifier, "
+        "       reverification_generation "
         "FROM source_verified_evidence WHERE id = %s",
         (new_evidence_id,)
     )
@@ -693,6 +703,7 @@ def persist_source_drift_evaluation(cur, reverification_id: int, prev_evidence_i
         verifier_version=row_new["verifier_version"],
         subject_type=row_new["subject_type"],
         subject_id=row_new["subject_id"],
+        reverification_generation=row_new["reverification_generation"],
         institution_identity_verified=row_new["institution_identity_verified"],
         endpoint_identity_verified=row_new["endpoint_identity_verified"],
         rights_statement_retrieved=row_new["rights_statement_retrieved"],
