@@ -186,7 +186,36 @@ create table if not exists source_drift_evaluations (
   created_at timestamptz not null default now()
 );
 
--- 7. Apply Immutability Append-Only rules to all tables (No UPDATE, DELETE, TRUNCATE)
+-- 7. Create DB-Side Generation Binding trigger (Autoritative, ignores/rejects caller values)
+create or replace function source_verified_evidence_bind_generation()
+returns trigger language plpgsql as $$
+declare
+  v_gen integer := 0;
+begin
+  if new.subject_type = 'endpoint' then
+    select reverification_generation into v_gen from public.source_endpoints where id = new.subject_id;
+    if not found then
+      raise exception 'MISSING_SUBJECT_VIOLATION: Target endpoint % does not exist', new.subject_id;
+    end if;
+  elif new.subject_type = 'collection' then
+    select reverification_generation into v_gen from public.source_collections where id = new.subject_id;
+    if not found then
+      raise exception 'MISSING_SUBJECT_VIOLATION: Target collection % does not exist', new.subject_id;
+    end if;
+  elif new.subject_type = 'proposal' then
+    v_gen := 0;
+  end if;
+  
+  new.reverification_generation := coalesce(v_gen, 0);
+  return new;
+end $$;
+
+drop trigger if exists source_verified_evidence_bind_generation_trigger on source_verified_evidence;
+create trigger source_verified_evidence_bind_generation_trigger
+  before insert on source_verified_evidence
+  for each row execute function source_verified_evidence_bind_generation();
+
+-- 8. Apply Immutability Append-Only rules to all tables (No UPDATE, DELETE, TRUNCATE)
 create or replace function source_governance_is_append_only()
 returns trigger language plpgsql as $$
 begin
@@ -236,7 +265,7 @@ create trigger source_drift_evaluations_no_truncate
 alter table source_drift_evaluations enable always trigger source_drift_evaluations_append_only;
 alter table source_drift_evaluations enable always trigger source_drift_evaluations_no_truncate;
 
--- 8. Ensure role exists before granting
+-- 9. Ensure role exists before granting
 do $$
 begin
   if not exists (select 1 from pg_roles where rolname = 'terraveler_evaluator') then
@@ -244,7 +273,7 @@ begin
   end if;
 end $$;
 
--- 9. Privileges and Access Control (Strict Revokes and Schedulable Grants)
+-- 10. Privileges and Access Control (Strict Revokes and Schedulable Grants)
 revoke all on source_reverifications, source_reverification_events, source_drift_evaluations from public, terraveler_anon;
 
 revoke insert, update, delete, truncate on source_reverifications from terraveler_service;

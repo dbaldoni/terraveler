@@ -319,6 +319,35 @@ create table if not exists source_governance_comparisons (
   ))
 );
 
+-- DB-Side Generation Binding trigger (Autoritative, ignores/rejects caller values)
+create or replace function source_verified_evidence_bind_generation()
+returns trigger language plpgsql as $$
+declare
+  v_gen integer := 0;
+begin
+  if new.subject_type = 'endpoint' then
+    select reverification_generation into v_gen from public.source_endpoints where id = new.subject_id;
+    if not found then
+      raise exception 'MISSING_SUBJECT_VIOLATION: Target endpoint % does not exist', new.subject_id;
+    end if;
+  elif new.subject_type = 'collection' then
+    select reverification_generation into v_gen from public.source_collections where id = new.subject_id;
+    if not found then
+      raise exception 'MISSING_SUBJECT_VIOLATION: Target collection % does not exist', new.subject_id;
+    end if;
+  elif new.subject_type = 'proposal' then
+    v_gen := 0;
+  end if;
+  
+  new.reverification_generation := coalesce(v_gen, 0);
+  return new;
+end $$;
+
+drop trigger if exists source_verified_evidence_bind_generation_trigger on source_verified_evidence;
+create trigger source_verified_evidence_bind_generation_trigger
+  before insert on source_verified_evidence
+  for each row execute function source_verified_evidence_bind_generation();
+
 -- ----------------------------------------------------------------------------
 -- Public views for secure REST exposure (replaces direct table access for anon)
 -- ----------------------------------------------------------------------------
