@@ -154,6 +154,36 @@ test("no hover rule fires where there is no pointer", () => {
   );
 });
 
+test("map doors use the accent hover language", () => {
+  const css = uncommented(readFileSync(join(ROOT, "app/globals.css"), "utf8"));
+  const buttonRules = [...css.matchAll(/\.tr-btn:hover\s*\{([^}]*)\}/g)];
+
+  assert.ok(buttonRules.length > 0, "the top-right doors need a hover state");
+  for (const [, declarations] of buttonRules) {
+    assert.match(declarations, /background:\s*var\(--accent\)/);
+    assert.match(declarations, /color:\s*var\(--parchment\)/);
+  }
+  assert.match(css, /\.map-atlas-door:hover\s*\{[^}]*background:\s*var\(--accent\)/);
+});
+
+test("phone timelines stay integrated while wide Atlas chrome floats", () => {
+  const earth = readFileSync(join(ROOT, "components/VoyageExperience.tsx"), "utf8");
+  const space = readFileSync(join(ROOT, "components/SpaceVoyageExperience.tsx"), "utf8");
+  const atlas = readFileSync(join(ROOT, "components/AtlasBrowser.tsx"), "utf8");
+  const css = uncommented(readFileSync(join(ROOT, "app/globals.css"), "utf8"));
+
+  for (const experience of [earth, space]) {
+    assert.match(experience, /events\.length\s*>\s*0\s*&&\s*!isMobile/);
+    assert.match(experience, /\.\.\.\(isMobile\s*\?\s*\[/);
+    assert.match(experience, /key:\s*["']world["']/);
+  }
+
+  assert.match(atlas, /<DraggableWindow/);
+  assert.doesNotMatch(atlas, /inset:\s*["']0 auto 0 0["']/);
+  assert.match(css, /\.world-strip\s*\{[\s\S]*?z-index:\s*11/);
+  assert.match(css, /\[data-layout="phone"\]\s+\.win\s*\{[\s\S]*?position:\s*fixed[\s\S]*?inset:\s*0/);
+});
+
 /* The press highlight is recoloured rather than removed, so it is a token, and
    a token every register must re-declare — ink at a tenth is invisible on a
    starfield. This is the rule that `--state-changes` broke by shipping at

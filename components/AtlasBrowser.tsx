@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Icon from "@/components/Icon";
 import AtlasSearch from "@/components/AtlasSearch";
+import DraggableWindow from "@/components/DraggableWindow";
 import { ATLAS, voyageLogPath } from "@/lib/voyages";
 import type { Voyage, Navigator } from "@/lib/types";
 
@@ -39,60 +40,8 @@ export default function AtlasBrowser({
   const currentVoyageLabel = voyage.kind === "space" ? "CURRENT MISSION" : "CURRENT VOYAGE";
 
   return (
-    <section
-      aria-label="The Atlas"
-      className="atlas-browser-shell"
-      style={{
-        position: "absolute",
-        inset: "0 auto 0 0",
-        width: "min(420px, 100%)",
-        zIndex: 30,
-        display: "flex",
-        flexDirection: "column",
-        background: "var(--parchment)",
-        borderRight: "1px solid var(--rule-mid)",
-        boxShadow: "var(--elev-1)",
-        pointerEvents: "auto",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          minHeight: "58px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "var(--space-3)",
-          padding: "0 var(--space-4)",
-          borderBottom: "1px solid var(--rule-mid)",
-          background: "var(--parchment-deep)",
-          flex: "0 0 auto",
-        }}
-      >
-        <span style={{ fontFamily: "var(--font-ui)", fontSize: "var(--step-1)" }}>The Atlas</span>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close the Atlas"
-          title="Close the Atlas"
-          style={{
-            width: "var(--tap-min)",
-            height: "var(--tap-min)",
-            border: 0,
-            background: "transparent",
-            color: "var(--ink)",
-            font: "inherit",
-            fontSize: "1.5rem",
-            lineHeight: 1,
-            cursor: "pointer",
-            touchAction: "manipulation",
-          }}
-        >
-          ×
-        </button>
-      </div>
-
-      <div className="atlas-browser" style={{ overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
+    <DraggableWindow title="The Atlas" onClose={onClose} width={390} initial={{ left: 72, top: 168 }}>
+      <section aria-label="The Atlas" className="atlas-browser">
         {!isSearching && (
           <div className="atlas-browser-orientation">
             <span className="cart-kicker">THE ATLAS</span>
@@ -171,7 +120,7 @@ export default function AtlasBrowser({
             </a>
           </div>
         )}
-      </div>
-    </section>
+      </section>
+    </DraggableWindow>
   );
 }
