@@ -236,24 +236,127 @@ def _verify_source_legacy(url: str, fetch_json=None):
     return False, f"off-whitelist domain: {host or url!r}"
 
 
-def verify_source(url: str, fetch_json=None):
-    """The single gate every text passes through — curated as well as discovered.
-
-    Returns (ok, licence_or_reason). Curated configs used to bypass the
-    whitelist entirely, on the assumption that a human had vetted them. But a
-    human proposed all three in-copyright editions above, so the curated config
-    is precisely where the check was missing.
+def resolve_source_authority(url: str, fetch_json=None) -> dict:
     """
-    # Shadow Mode Comparison Integration (Phase 2B)
+    Canonical single authority resolver for TerraVeler ingestion.
+    Resolves source authority according to SOURCE_AUTHORITY_MODE:
+    - legacy: whitelist.py decides ingestion
+    - shadow: whitelist.py decides ingestion, registry runs in parallel and logs mismatches
+    - registry: database registry is the sole authority; fails closed on error
+    """
     import os
-    if os.environ.get("SOURCE_GOVERNANCE_SHADOW_ENABLED", "").lower() == "true" and not _in_shadow_mode.get():
-        token = _in_shadow_mode.set(True)
-        try:
-            from source_governance_shadow import compare_shadow
-            return compare_shadow(url, fetch_json=fetch_json)
-        except Exception:
-            pass # Fall back to legacy below
-        finally:
-            _in_shadow_mode.reset(token)
+    mode = os.environ.get("SOURCE_AUTHORITY_MODE", "legacy").lower().strip()
+    if mode not in ("legacy", "shadow", "registry"):
+        mode = "legacy"
 
-    return _verify_source_legacy(url, fetch_json=fetch_json)
+    # Evaluate legacy outcome
+    legacy_ok, legacy_why = _verify_source_legacy(url, fetch_json=fetch_json)
+    legacy_res = {"allowed": legacy_ok, "why": legacy_why}
+
+    if mode == "legacy":
+        return {
+            "allowed": legacy_ok,
+            "authority_mode": mode,
+            "decision_source": "legacy",
+            "trust_mode": canonical_license(legacy_why) if legacy_ok else None,
+            "source_endpoint_id": None,
+            "source_collection_id": None,
+            "policy_decision_id": None,
+            "reason_codes": [legacy_why],
+            "legacy_result": legacy_res,
+            "registry_result": None,
+            "comparison_class": None
+        }
+
+    # Evaluate registry outcome (Fails closed on DB error or unverified scope)
+    from source_governance_shadow import resolve_trust_from_db, record_comparison, canonicalize_url
+    reg = resolve_trust_from_db(url)
+    
+    registry_allowed = False
+    registry_reason = "rejected: missing or inactive registry status"
+
+    if reg.get("matched"):
+        if reg["decision"] == "allow":
+            registry_allowed = True
+            registry_reason = reg["rights_class"]
+        elif reg["decision"] == "requires_item_verification":
+            if reg["verification_strategy"] == "archive_org_metadata":
+                registry_allowed, registry_reason = verify_archive_item(url, fetch_json=fetch_json)
+            else:
+                registry_allowed = False
+                registry_reason = f"unknown verification strategy: {reg['verification_strategy']}"
+        elif reg["decision"] == "deny":
+            registry_allowed = False
+            registry_reason = f"quarantined/rejected/review status on registry endpoint"
+            
+    if reg.get("error"):
+        registry_reason = f"fail closed: registry infrastructure error ({reg['error']})"
+
+    registry_res = {
+        "allowed": registry_allowed,
+        "why": registry_reason,
+        "trust_mode": reg.get("trust_mode"),
+        "verification_strategy": reg.get("verification_strategy")
+    }
+
+    # Evaluate semantic equivalence for shadow logging
+    equivalent = True
+    diff_class = "MATCH"
+
+    if legacy_res["allowed"] != registry_res["allowed"]:
+        equivalent = False
+        diff_class = "ALLOW_DENY_MISMATCH"
+    elif reg.get("matched") and legacy_res["allowed"]:
+        legacy_lic = canonical_license(legacy_res["why"])
+        registry_lic = canonical_license(registry_res["why"])
+        if legacy_lic != registry_lic:
+            equivalent = False
+            diff_class = "LICENCE_CLASS_MISMATCH"
+
+    # Log shadow comparisons only in shadow mode or shadow-triggered runs
+    if mode == "shadow" or os.environ.get("SOURCE_GOVERNANCE_SHADOW_ENABLED", "").lower() == "true":
+        if not equivalent and not _in_shadow_mode.get():
+            token = _in_shadow_mode.set(True)
+            try:
+                redacted_url = canonicalize_url(url)
+                record_comparison(redacted_url, legacy_res, registry_res, equivalent, diff_class)
+            except Exception:
+                pass
+            finally:
+                _in_shadow_mode.reset(token)
+
+    if mode == "shadow":
+        return {
+            "allowed": legacy_ok, # Shadow Mode never alters active behavior
+            "authority_mode": mode,
+            "decision_source": "legacy",
+            "trust_mode": canonical_license(legacy_why) if legacy_ok else None,
+            "source_endpoint_id": reg.get("endpoint_id"),
+            "source_collection_id": None,
+            "policy_decision_id": reg.get("policy_decision_id"),
+            "reason_codes": [legacy_why],
+            "legacy_result": legacy_res,
+            "registry_result": registry_res,
+            "comparison_class": diff_class
+        }
+
+    # Registry mode: database registry is the sole runtime authority
+    return {
+        "allowed": registry_allowed,
+        "authority_mode": mode,
+        "decision_source": "registry",
+        "trust_mode": reg.get("trust_mode") if registry_allowed else None,
+        "source_endpoint_id": reg.get("endpoint_id"),
+        "source_collection_id": None,
+        "policy_decision_id": reg.get("policy_decision_id"),
+        "reason_codes": [registry_reason],
+        "legacy_result": legacy_res,
+        "registry_result": registry_res,
+        "comparison_class": diff_class
+    }
+
+
+def verify_source(url: str, fetch_json=None):
+    """The single gate every text passes through — curated as well as discovered."""
+    res = resolve_source_authority(url, fetch_json=fetch_json)
+    return res["allowed"], res["reason_codes"][0]
