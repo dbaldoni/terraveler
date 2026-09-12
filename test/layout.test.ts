@@ -173,7 +173,7 @@ test("phone timelines stay integrated while wide Atlas chrome floats", () => {
   const css = uncommented(readFileSync(join(ROOT, "app/globals.css"), "utf8"));
 
   for (const experience of [earth, space]) {
-    assert.match(experience, /events\.length\s*>\s*0\s*&&\s*!isMobile/);
+    assert.match(experience, /\{!isMobile\s*&&\s*\(/);\n    assert.doesNotMatch(experience, /events\.length\s*>\s*0\s*&&\s*!isMobile/);
     assert.match(experience, /\.\.\.\(isMobile\s*\?\s*\[/);
     assert.match(experience, /key:\s*["']world["']/);
   }

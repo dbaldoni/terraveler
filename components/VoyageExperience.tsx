@@ -793,13 +793,13 @@ export default function VoyageExperience({
           bottom, which is two timelines at opposite ends of a small screen. It
           moves into the bar's switch there. It also opens on hover, which does
           not exist under a finger, so down there it had nothing to say anyway. */}
-      {events.length > 0 && !isMobile && (
+      {!isMobile && (
       <div
         className="world-strip"
         onMouseEnter={() => setStripHover(true)}
         onMouseLeave={() => setStripHover(false)}
       >
-        <div className="ws-kicker">Meanwhile in the world</div>
+        <div className="ws-kicker">\n          {events.length > 0 ? "Meanwhile in the world" : "No world events catalogued for this passage"}\n        </div>
         <div className="wt-track">
           {events.map((ev) => (
             <button
