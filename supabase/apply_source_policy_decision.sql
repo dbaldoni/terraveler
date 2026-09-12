@@ -1,6 +1,6 @@
--- Phase 3B.2/3B.3: Atomic Policy Application and Lifecycle Engine RPC (Hardened)
+-- Phase 3B.2/3B.3: Atomic Policy Application and Lifecycle Engine RPC (Hardened Sealing)
 -- Enforces strict TOCTOU checks, database consistency checks,
--- stale-evaluation prevention, and atomic database-side lifecycle mutations.
+-- generation-binding staleness prevention, and atomic database-side lifecycle mutations.
 
 create or replace function apply_source_policy_decision(
   p_evaluation_id bigint,
@@ -26,6 +26,10 @@ declare
   v_rights_class text;
   v_rights_identifier text;
   
+  v_evaluation_generation integer;
+  v_evidence_generation integer;
+  v_subject_generation integer := 0;
+  
   v_old_endpoint_id bigint := null;
   v_old_collection_id bigint := null;
   v_old_proposal_id bigint := null;
@@ -40,11 +44,11 @@ begin
   select 
     evaluation_hash, verified_evidence_id, subject_type, subject_id,
     decision_outcome, trust_mode, rule_id, policy_version, verification_version,
-    evaluation_snapshot, evidence_hash
+    evaluation_snapshot, evidence_hash, reverification_generation
   into 
     v_evaluation_hash, v_verified_evidence_id, v_subject_type, v_subject_id,
     v_decision_outcome, v_trust_mode, v_rule_id, v_policy_version, v_verification_version,
-    v_evaluation_snapshot, v_evidence_hash
+    v_evaluation_snapshot, v_evidence_hash, v_evaluation_generation
   from public.source_policy_evaluations
   where id = p_evaluation_id;
   
@@ -57,15 +61,15 @@ begin
   end if;
 
   -- --------------------------------------------------------------------------
-  -- 2. Verify Subject Binding and Prevent Stale Evaluation Application
+  -- 2. Verify Subject Binding and Generation-Binding Staleness Prevention
   -- --------------------------------------------------------------------------
   declare
     v_evidence_subject_type text;
     v_evidence_subject_id bigint;
     v_evidence_stored_hash text;
   begin
-    select subject_type, subject_id, evidence_hash 
-    into v_evidence_subject_type, v_evidence_subject_id, v_evidence_stored_hash
+    select subject_type, subject_id, evidence_hash, reverification_generation
+    into v_evidence_subject_type, v_evidence_subject_id, v_evidence_stored_hash, v_evidence_generation
     from public.source_verified_evidence
     where id = v_verified_evidence_id;
     
@@ -82,15 +86,27 @@ begin
         v_evidence_subject_type, v_evidence_subject_id, v_subject_type, v_subject_id;
     end if;
 
-    -- Prevent applying stale evaluations if a newer verification artifact exists for this subject (Supersession Safety)
-    if exists (
-      select 1 from public.source_verified_evidence
-      where subject_type = v_subject_type and subject_id = v_subject_id
-        and id > v_verified_evidence_id
-    ) then
-      raise exception 'STALE_EVALUATION_VIOLATION: Associated VerifiedEvidence % has been superseded by a newer verification', v_verified_evidence_id;
+    -- Require that evidence generation matches the evaluation generation
+    if v_evidence_generation != v_evaluation_generation then
+      raise exception 'STALE_EVALUATION_VIOLATION: Associated VerifiedEvidence % generation % does not match evaluation generation %', 
+        v_verified_evidence_id, v_evidence_generation, v_evaluation_generation;
     end if;
   end;
+
+  -- Read current subject's generation (Staleness Authority)
+  if v_subject_type = 'endpoint' then
+    select reverification_generation into v_subject_generation from public.source_endpoints where id = v_subject_id;
+  elif v_subject_type = 'collection' then
+    select reverification_generation into v_subject_generation from public.source_collections where id = v_subject_id;
+  else
+    v_subject_generation := 0;
+  end if;
+
+  -- Require exact match of the subject generation
+  if v_subject_generation != v_evaluation_generation then
+    raise exception 'STALE_EVALUATION_VIOLATION: Evaluation generation % does not match current subject generation %', 
+      v_evaluation_generation, v_subject_generation;
+  end if;
 
   -- --------------------------------------------------------------------------
   -- 3. Proposal Ingestion Rule (No Proposal APPROVE)
