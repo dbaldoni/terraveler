@@ -421,13 +421,13 @@ export default function SpaceVoyageExperience({
 
       {/* Wide only: on a phone this band encodes the same axis as the bar at
           the other end of the screen, and moves into the bar’s switch. */}
-      {events.length > 0 && !isMobile && (
+      {!isMobile && (
         <div
           className="world-strip"
           onMouseEnter={() => setStripHover(true)}
           onMouseLeave={() => setStripHover(false)}
         >
-          <div className="ws-kicker">Meanwhile on Earth</div>
+          <div className="ws-kicker">\n            {events.length > 0 ? "Meanwhile on Earth" : "No Earth events catalogued for this mission"}\n          </div>
           <div className="wt-track">
             {events.map((ev) => (
               <button
