@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-09-13T09:34:16Z",
+ "generated_at": "2026-09-13T10:44:24Z",
  "source": "Wikipedia year articles via MediaWiki API; structured with Wikidata (wbgetentities).",
  "attribution": "Contains information from Wikipedia and Wikidata, available under CC BY-SA 4.0 and CC0 respectively.",
- "catalogue_events": 3891,
+ "catalogue_events": 4737,
  "voyages": {
   "apollo-11": {
    "count": 15,
@@ -37,8 +37,8 @@
   "cabot-1497": {
    "count": 15,
    "classes": {
-    "world": 10,
-    "route": 4,
+    "world": 9,
+    "route": 5,
     "connected": 1
    },
    "years": "1497–1497",
@@ -137,8 +137,8 @@
   "ibnbattuta-1325": {
    "count": 15,
    "classes": {
-    "world": 1,
-    "route": 10,
+    "world": 4,
+    "route": 7,
     "connected": 4
    },
    "years": "1325–1352",
@@ -227,11 +227,11 @@
   "xuanzang-629": {
    "count": 15,
    "classes": {
-    "world": 10,
-    "route": 3,
+    "world": 4,
+    "route": 9,
     "connected": 2
    },
-   "years": "629–645",
+   "years": "412–645",
    "uncovered": false
   }
  },
