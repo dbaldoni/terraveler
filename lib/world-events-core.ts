@@ -109,6 +109,7 @@ export interface VoyageEventProjection {
     generated_at?: string;
     source?: string;
     attribution?: string;
+    catalogue?: number;
   };
   voyages: Record<string, VoyageContextEvent[]>;
 }

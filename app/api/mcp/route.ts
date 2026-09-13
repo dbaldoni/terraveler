@@ -10,6 +10,8 @@ import { allPlaces } from "@/lib/gazetteer";
 import { searchIndex, rank, normalize as norm } from "@/lib/search-index";
 import { evidenceBasisOf, evidenceCopy } from "@/lib/evidence";
 import { adaptEditorialGap } from "@/lib/chartroom";
+import { voyageEventsFor, worldEventsMeta } from "@/lib/world-events";
+import worldEventsCoverage from "@/data/world-events-coverage.json";
 
 /**
  * Terraveler MCP server (Streamable HTTP, stateless).
@@ -464,6 +466,37 @@ const TOOL_DEFINITIONS = [
       "by name — so Tahiti under Cook and under Bougainville are one place.",
     inputSchema: { type: "object", required: ["query"],
       properties: { query: { type: "string" } } } },
+  { name: "get_context_events",
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    securitySchemes: OPEN,
+    description:
+      "The historical context curated for one voyage: the events happening elsewhere while " +
+      "it was under way, each classified as world, route or connected and ranked for THAT " +
+      "voyage. Every event is grounded in Wikipedia/Wikidata with its QID, partial date and " +
+      "precision, source revision and links; no date or fact is invented. An empty result is " +
+      "a real answer — the voyage then has no validated context yet.",
+    inputSchema: { type: "object", required: ["slug"],
+      properties: { slug: { type: "string" }, limit: { type: "number" } } } },
+  { name: "list_event_gaps",
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    securitySchemes: OPEN,
+    description:
+      "Report the contextual-event coverage of the Atlas: which published voyages have no " +
+      "validated contemporary events and how many each holds. Use it to choose real work — " +
+      "an uncovered voyage is a concrete gap, not a guess. Coverage changes through the " +
+      "governed contribution flow, never by an agent writing the catalogue directly.",
+    inputSchema: { type: "object",
+      properties: { include_coverage: { type: "boolean" } } } },
   { name: "get_contract",
     annotations: {
       readOnlyHint: true,
@@ -1032,6 +1065,87 @@ async function callTool(name: string, args: any, bearer?: Bearer | null): Promis
           ? "These expeditions reached the same place, resolved by coordinate rather than by " +
             "name. Their accounts of it can be read against one another."
           : "One recorded visit in the atlas so far.",
+      }, null, 2);
+    }
+
+    case "get_context_events": {
+      const slug = String(args?.slug ?? "").trim();
+      if (!isVoyageSlug(slug))
+        return `ERROR: unknown voyage '${slug}'. Known: ${ATLAS.map((v) => v.slug).join(", ")}`;
+      const limit = Math.min(Math.max(Number(args?.limit) || 50, 1), 100);
+      const entry = ATLAS.find((a) => a.slug === slug);
+      const events = voyageEventsFor(slug).slice(0, limit);
+      const meta = worldEventsMeta();
+      const catalogue = meta
+        ? { generated_at: meta.generated_at, source: meta.source, attribution: meta.attribution }
+        : null;
+      if (!events.length) {
+        return JSON.stringify({
+          slug, title: entry?.title, years: entry?.years,
+          found: 0,
+          catalogue,
+          note:
+            "No validated contextual events are cached for this voyage yet. This is an " +
+            "honest empty result, not a failure. A candidate can be proposed through the " +
+            "governed contribution flow; list_event_gaps shows the work the desk wants.",
+        }, null, 2);
+      }
+      return JSON.stringify({
+        slug, title: entry?.title, navigator: entry?.navigator, years: entry?.years,
+        found: events.length,
+        catalogue,
+        events: events.map((e) => ({
+          date: e.date,
+          date_precision: e.date_precision,
+          title: e.title,
+          summary: e.blurb,
+          category: e.category,
+          region: e.region,
+          relevance_class: e.relevance_class,
+          relevance_score: e.relevance_score,
+          why: e.why,
+          qid: e.qid ?? undefined,
+          wikipedia: e.wikipedia_url ?? undefined,
+          wikidata: e.wikidata_url ?? undefined,
+          source_language: e.source_language,
+          retrieved_at: e.retrieved_at,
+          source_revision: e.source_revision ?? undefined,
+          confidence: e.confidence,
+        })),
+        note:
+          "Dates keep their source precision (a year-only event is never promoted to a " +
+          "day). relevance_class is world, route or connected; why is the deterministic " +
+          "reason this event was selected for this voyage. Cite the linked source.",
+      }, null, 2);
+    }
+
+    case "list_event_gaps": {
+      const cov = worldEventsCoverage as any;
+      const rows = Object.entries(cov.voyages ?? {}).map(([slug, v]: [string, any]) => {
+        const a = ATLAS.find((x) => x.slug === slug);
+        return {
+          slug,
+          title: a?.title,
+          navigator: a?.navigator,
+          years: v.years ?? a?.years,
+          count: v.count,
+          classes: v.classes,
+          uncovered: !!v.uncovered,
+        };
+      }).sort((a, b) => a.count - b.count || a.slug.localeCompare(b.slug));
+      const uncovered = rows.filter((v) => v.uncovered || v.count === 0);
+      return JSON.stringify({
+        generated_at: cov.generated_at,
+        catalogue_events: cov.catalogue_events,
+        attribution: cov.attribution,
+        voyages: rows.length,
+        uncovered_count: uncovered.length,
+        uncovered: uncovered.map(({ slug, title, navigator, years }) => ({ slug, title, navigator, years })),
+        coverage: args?.include_coverage === false ? undefined : rows,
+        note: uncovered.length
+          ? "These voyages have no validated contextual events. That is the gap to fill."
+          : "Every published voyage currently holds contextual events. The rows with the " +
+            "lowest counts are the thinnest coverage and the likeliest place for better sources.",
       }, null, 2);
     }
 

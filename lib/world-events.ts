@@ -64,3 +64,16 @@ export function catalogueEvents(): NormalizedEvent[] {
   if (Array.isArray(data)) return data as NormalizedEvent[];
   return [];
 }
+
+/** Provenance for the catalogue as a whole: source, attribution, generation
+ *  time and size. Used by the MCP read tools so an agent can cite the dataset
+ *  rather than the projection's individual rows. */
+export function worldEventsMeta(): {
+  generated_at?: string;
+  source?: string;
+  attribution?: string;
+  catalogue?: number;
+} | null {
+  const data = worldEventsData as unknown;
+  return isProjection(data) ? data._meta ?? null : null;
+}

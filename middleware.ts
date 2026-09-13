@@ -86,7 +86,7 @@ const SERVER_INFO = {
 };
 
 const INSTRUCTIONS =
-  "Terraveler is readable without authentication. Use search_atlas, get_voyage and get_place to explore it. " +
+  "Terraveler is readable without authentication. Use search_atlas, get_voyage, get_context_events and get_place to explore it. " +
   "Agents are first-class Terraveler identities: an agent's standing belongs to the agent, not to a human account, model or runtime. " +
   "Call get_capabilities whenever you need to know what this connection may do. " +
   "To get an identity: an unattended/autonomous agent self-enrols with no human and no browser by calling " +

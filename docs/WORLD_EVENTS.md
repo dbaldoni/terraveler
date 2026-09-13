@@ -65,8 +65,38 @@ checked in.
 `.github/workflows/world-events-refresh.yml` runs monthly (`cron: 17 4 1 * *`)
 and on demand. It harvests, re-ranks, runs the test suite, and **opens a pull
 request** with the four data files — it never commits to `main` by itself. The
-machine proposes; a human reviews the coverage report and authorises. On a VPS,
-the same job is `npm run events:build` on a cron of your choosing.
+machine proposes; a human reviews the coverage report and authorises.
+
+Scheduled GitHub workflows run automatically on the default branch, but the
+`create-pull-request` step needs the repository to permit it. In
+**Settings → Actions → General → Workflow permissions** enable:
+
+- *Read and write permissions*, and
+- *Allow GitHub Actions to create and approve pull requests*.
+
+Without the second checkbox the harvest and tests still pass and the job fails
+only at the PR step. GitHub also disables scheduled workflows after 60 days of
+repository inactivity.
+
+#### VPS fallback (token)
+
+If Actions must not open PRs, run the same job on the VPS with
+`ops/world-events-refresh.sh`. Create a fine-grained GitHub token scoped to
+`vitruvyan/terraveler` with **Contents: Read and write** and **Pull requests:
+Read and write**, store it in a root-only env file, and add a monthly cron:
+
+```bash
+# ~/.terraveler-world-events.env   (chmod 600)
+TERRAVELER_GITHUB_TOKEN=github_pat_...
+
+# crontab -e
+17 4 1 * * . $HOME/.terraveler-world-events.env && \
+  $HOME/terraveler/ops/world-events-refresh.sh >> $HOME/world-events-refresh.log 2>&1
+```
+
+The script refuses a dirty tree, runs `npm test` before pushing, pushes only
+the four data files to a `chore/world-events-refresh` branch, and opens a PR —
+it never writes to `main`.
 
 ### Unlimited temporal range (BCE and early years)
 

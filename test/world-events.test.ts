@@ -19,6 +19,7 @@ import {
   type ScoringVoyage,
 } from "../lib/world-events-core";
 import { parseHistoricalDate } from "../lib/voyage-motion";
+import { voyageEventsFor, worldEventsMeta } from "../lib/world-events";
 import { ATLAS } from "../lib/voyages";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -331,4 +332,38 @@ test("the coverage report exists and is machine-readable", () => {
   const coverage = readJson("data/world-events-coverage.json");
   assert.ok(typeof coverage.catalogue_events === "number");
   assert.ok(Array.isArray(coverage.uncovered));
+});
+
+// 11. MCP read capabilities --------------------------------------------------
+
+/**
+ * The catalogue is written by agents but governed by humans, so what the MCP
+ * exposes is READ access plus the existing proposal flow — never a write tool
+ * into the catalogue. These assertions pin that boundary.
+ */
+test("the MCP exposes contextual events and coverage as read-only tools", () => {
+  const route = read("app/api/mcp/route.ts");
+  for (const name of ["get_context_events", "list_event_gaps"]) {
+    assert.match(route, new RegExp(`name: "${name}"`), `${name} is not defined`);
+  }
+  // Neither is a scoped write tool: TOOL_SCOPE is the write authority map.
+  const scopes = read("lib/agentCapabilities.ts");
+  assert.doesNotMatch(scopes, /get_context_events|list_event_gaps/);
+  // Both are declared read-only and unauthenticated.
+  const block = route.slice(route.indexOf('name: "get_context_events"'), route.indexOf('name: "get_contract"'));
+  assert.match(block, /name: "get_context_events"[\s\S]*?readOnlyHint: true/);
+  assert.match(block, /name: "list_event_gaps"[\s\S]*?readOnlyHint: true/);
+  assert.match(block, /securitySchemes: OPEN/);
+});
+
+test("the MCP tool outputs are grounded in the checked-in catalogue", () => {
+  const meta = worldEventsMeta();
+  assert.ok(meta?.attribution, "the catalogue must carry attribution for citation");
+  const events = voyageEventsFor("gama-1497");
+  assert.ok(events.length > 0);
+  for (const e of events) {
+    assert.ok(e.qid || e.wikipedia_url);
+    assert.ok(e.date_precision);
+    assert.ok(e.relevance_class);
+  }
 });
