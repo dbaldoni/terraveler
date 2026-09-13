@@ -17,3 +17,6 @@ __pycache__/
 *.pyc
 *.bak-*
 .gazetteer-cache.json
+
+# World-events acquisition cache (regenerable; see scripts/build_world_events.py)
+.world-events-cache.json

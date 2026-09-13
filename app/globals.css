@@ -2004,6 +2004,28 @@ button.vt-seg:focus-visible { outline: 2px solid var(--brass); outline-offset: 2
   line-height: 1.45;
   color: var(--ink);
 }
+/* The deterministic "why this matters to this voyage" line. The machine
+   annotates in the margin; it stays small and soft, never a second headline. */
+.ws-why {
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+/* Wikimedia attribution, machine voice and quiet — present, not shouted. */
+.wt-attrib {
+  font-family: var(--font-mono);
+  font-size: var(--step--3);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+/* The honest empty state. A voyage with no cached, validated context says so
+   rather than borrowing a neighbour's history. */
+.ws-empty {
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 2px 0;
+}
 
 .transport-bar {
   position: absolute;

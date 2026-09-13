@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useEdgeStack } from "@/lib/useEdgeStack";
 import { useLayoutMode, isPhoneNow } from "@/lib/layout";
 import type { BodyId, MediaItem, Navigator, Voyage, VoyageKind, Waypoint } from "@/lib/types";
-import worldEventsData from "@/data/world_events.json";
+import { voyageEventsFor, formatHistoricalMonthYear, parsePartialDate, type VoyageContextEvent } from "@/lib/world-events";
 import DraggableWindow from "@/components/DraggableWindow";
 import MapTop from "@/components/map/MapTop";
 import MapNote from "@/components/map/MapNote";
@@ -20,7 +20,6 @@ import {
   DAY,
   PLAYBACK_TICK_MS,
   PLAYBACK_SECONDS,
-  parseHistoricalDate,
   buildLegs as buildMotionLegs,
   shipStateAt as motionShipStateAt,
   traveledLine as motionTraveledLine,
@@ -28,15 +27,6 @@ import {
 } from "@/lib/voyage-motion";
 
 type Lens = "log" | "chart" | "carto" | "plates";
-
-type WorldEvent = {
-  date: string;
-  title: string;
-  blurb: string;
-  category: string;
-  region: string;
-  source_url: string;
-};
 
 // Great powers and colours now come from the era's entry in lib/historical-maps.
 
@@ -207,14 +197,16 @@ export default function VoyageExperience({
     return arr;
   }, [legs]);
 
-  // World events within THIS voyage's window, on the same time axis.
+  // World events within THIS voyage's window, on the same time axis. Read from
+  // the checked-in catalogue projection; never fetched in the page path, so the
+  // strip survives an upstream Wikimedia outage.
   const events = useMemo(
     () =>
-      (worldEventsData as WorldEvent[])
-        .map((e) => ({ ...e, time: parseHistoricalDate(e.date) ?? minTime }))
+      voyageEventsFor(voyage.slug)
+        .map((e) => ({ ...e, time: parsePartialDate(e.date)?.time ?? minTime }))
         .filter((e) => e.time >= minTime && e.time <= maxTime)
         .sort((a, b) => a.time - b.time),
-    [minTime, maxTime]
+    [voyage.slug, minTime, maxTime]
   );
 
   const [t, setT] = useState(minTime);
@@ -596,15 +588,13 @@ export default function VoyageExperience({
   const legNm = idx > 0 ? cumNm[idx] - cumNm[idx - 1] : 0;
   const daysAtSea = Math.max(0, Math.round((t - minTime) / DAY));
 
-  const dateLabel = new Intl.DateTimeFormat("en-GB", {
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(t));
+  // Hand-rolled so BCE and two-digit years are honest (Intl drops the era or
+  // reads "42" as 1942). Same convention as the rest of the Atlas.
+  const dateLabel = formatHistoricalMonthYear(t);
   const pct = maxTime > minTime ? ((t - minTime) / (maxTime - minTime)) * 100 : 0;
 
   // Current world event = the most recent one on or before the ship's date.
-  let worldNow: (WorldEvent & { time: number }) | null = null;
+  let worldNow: (VoyageContextEvent & { time: number }) | null = null;
   for (const e of events) {
     if (e.time <= t) worldNow = e;
     else break;
@@ -799,34 +789,62 @@ export default function VoyageExperience({
         onMouseEnter={() => setStripHover(true)}
         onMouseLeave={() => setStripHover(false)}
       >
-        <div className="ws-kicker">\n          {events.length > 0 ? "Meanwhile in the world" : "No world events catalogued for this passage"}\n        </div>
-        <div className="wt-track">
-          {events.map((ev) => (
-            <button
-              key={ev.title}
-              className={`wt-dot cat-${ev.category} ${
-                worldNow && ev.title === worldNow.title ? "active" : ""
-              }`}
-              style={{ left: `${pctOf(ev.time)}%` }}
-              title={`${ev.date} · ${ev.title}`}
-              aria-label={ev.title}
-              onClick={() => {
-                setPlaying(false);
-                setT(ev.time);
-              }}
-            />
-          ))}
-          <div className="wt-playhead" style={{ left: `${pct}%` }} />
-        </div>
-        {worldNow && (stripHover || t - worldNow.time < 45 * DAY) && (
-          <div className="ws-card">
-            <strong>{worldNow.title}</strong> — {worldNow.blurb}{" "}
-            {worldNow.source_url && (
-              <a href={worldNow.source_url} target="_blank" rel="noreferrer" className="wt-src">
-                source
-              </a>
-            )}
+        <div className="ws-kicker">Meanwhile in the world</div>
+        {events.length === 0 ? (
+          <div className="ws-empty">
+            No validated contemporary events are cached for this voyage yet.
           </div>
+        ) : (
+          <>
+            <div className="wt-track">
+              {events.map((ev) => (
+                <button
+                  key={ev.id}
+                  className={`wt-dot cat-${ev.category} ${
+                    worldNow && ev.id === worldNow.id ? "active" : ""
+                  }`}
+                  style={{ left: `${pctOf(ev.time)}%` }}
+                  title={`${ev.date} · ${ev.title} · ${ev.category}`}
+                  aria-label={ev.title}
+                  data-qid={ev.qid ?? undefined}
+                  data-relevance-class={ev.relevance_class}
+                  data-relevance-score={ev.relevance_score}
+                  onClick={() => {
+                    setPlaying(false);
+                    setT(ev.time);
+                  }}
+                />
+              ))}
+              <div className="wt-playhead" style={{ left: `${pct}%` }} />
+            </div>
+            {worldNow && (stripHover || t - worldNow.time < 45 * DAY) && (
+              <div className="ws-card" data-qid={worldNow.qid ?? undefined}>
+                <strong>{worldNow.title}</strong> — {worldNow.blurb}{" "}
+                {worldNow.why && <span className="ws-why">{worldNow.why}</span>}{" "}
+                {(worldNow.wikipedia_url || worldNow.wikidata_url) && (
+                  <a
+                    href={(worldNow.wikipedia_url || worldNow.wikidata_url) as string}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="wt-src"
+                  >
+                    {worldNow.wikipedia_url ? "Wikipedia" : "Wikidata"}
+                  </a>
+                )}{" "}
+                {worldNow.qid && (
+                  <a
+                    href={worldNow.wikidata_url as string}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="wt-src"
+                  >
+                    {worldNow.qid}
+                  </a>
+                )}{" "}
+                <span className="wt-attrib">Wikipedia / Wikidata · CC BY-SA</span>
+              </div>
+            )}
+          </>
         )}
       </div>
       )}
@@ -1200,7 +1218,7 @@ export default function VoyageExperience({
                      rail switches what the date is telling you about. */
                   caption: worldNow ? worldNow.title : "",
                   marks: events.map((ev) => ({
-                    id: ev.title,
+                    id: ev.id,
                     at: ev.time,
                     label: ev.title,
                     className: `cat-${ev.category}`,

@@ -1,0 +1,76 @@
+name: Refresh world-events catalogue
+
+# The "Meanwhile in the world" strip renders from a checked-in cache, never from
+# a live request. This job refreshes that cache on a schedule and opens a pull
+# request — the machine proposes, a human authorizes. It never commits to main
+# on its own.
+#
+# It is intentionally separate from CI: acquisition talks to Wikipedia/Wikidata
+# and can be slow, while CI must stay hermetic.
+
+on:
+  schedule:
+    # 04:17 UTC on the first of each month. Off the hour so it does not race
+    # the rest of GitHub's cron traffic.
+    - cron: "17 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      # Build/test placeholders only; no database is touched by acquisition.
+      POSTGREST_URL: https://example.invalid
+      POSTGREST_SERVICE_KEY: ci-placeholder
+      SUPABASE_AUTH_URL: https://auth.example.invalid
+      SUPABASE_AUTH_KEY: ci-placeholder
+      NEXT_PUBLIC_SUPABASE_URL: https://auth.example.invalid
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Harvest and rank the catalogue
+        run: npm run events:build
+
+      - name: Verify the refreshed artefacts
+        run: npm test
+
+      - name: Open a pull request with the refreshed cache
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/world-events-refresh
+          delete-branch: true
+          commit-message: "chore(world-events): refresh the contextual catalogue"
+          title: "chore(world-events): monthly catalogue refresh"
+          body: |
+            Automated refresh of the contextual world-events catalogue.
+
+            - `data/historical-events.json` — normalised shared catalogue
+            - `data/world-events-voyages.json` — per-voyage scoring inputs
+            - `data/world_events.json` — client projection
+            - `data/world-events-coverage.json` — coverage report
+
+            Every event is sourced from Wikipedia/Wikidata; partial dates keep
+            their precision and no claim is invented. Review the coverage
+            report (especially `uncovered`) before merging.
+          add-paths: |
+            data/historical-events.json
+            data/world-events-voyages.json
+            data/world_events.json
+            data/world-events-coverage.json

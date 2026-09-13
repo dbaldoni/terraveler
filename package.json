@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx --test test/*.test.ts"
+    "test": "node --import tsx --test test/*.test.ts",
+    "events:build": "python3 scripts/build_world_events.py && tsx scripts/build_world_event_projection.ts",
+    "events:project": "tsx scripts/build_world_event_projection.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

@@ -34,15 +34,32 @@ export const DAY = 86_400_000;
 export const PLAYBACK_TICK_MS = 40;
 export const PLAYBACK_SECONDS = 60;
 
-/** "1768", "1768-04", or "1768-04-06" (partial ISO dates, as used in the data files). */
+/** "1768", "399", "-1299" — partial ISO dates, as used in the data files.
+ *  Negative years are astronomical (year 0 exists), so 1 BC is -1. */
 export function parseHistoricalDate(s: string | null): number | null {
   if (!s) return null;
-  const m = s.match(/^(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?/);
+  const m = s.match(/^(-?\d{1,4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?/);
   if (!m) return null;
   const y = Number(m[1]);
   const mo = m[2] ? Number(m[2]) - 1 : 0;
   const d = m[3] ? Number(m[3]) : 1;
-  return Date.UTC(y, mo, d);
+  return utcTimestamp(y, mo, d);
+}
+
+/**
+ * A UTC timestamp that is correct for EVERY year, including 0-99 and negatives.
+ *
+ * `Date.UTC(42, 0, 1)` is not year 42: the Date constructor's two-digit rule
+ * maps 0-99 to 1900+y, so every early voyage silently became a 20th-century
+ * one. `setUTCFullYear` has no such rule, and handles BCE years (negative)
+ * directly. This is the one place the epoch is built; nothing else should call
+ * `Date.UTC` with a year from the data.
+ */
+export function utcTimestamp(year: number, monthIndex = 0, day = 1): number {
+  const d = new Date(0);
+  d.setUTCHours(0, 0, 0, 0);
+  d.setUTCFullYear(year, monthIndex, day);
+  return d.getTime();
 }
 
 export interface MotionLeg<T> {

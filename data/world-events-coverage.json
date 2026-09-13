@@ -1,0 +1,239 @@
+{
+ "generated_at": "2026-09-13T09:34:16Z",
+ "source": "Wikipedia year articles via MediaWiki API; structured with Wikidata (wbgetentities).",
+ "attribution": "Contains information from Wikipedia and Wikidata, available under CC BY-SA 4.0 and CC0 respectively.",
+ "catalogue_events": 3891,
+ "voyages": {
+  "apollo-11": {
+   "count": 15,
+   "classes": {
+    "world": 14,
+    "route": 1,
+    "connected": 0
+   },
+   "years": "1969–1969",
+   "uncovered": false
+  },
+  "boudeuse-1766": {
+   "count": 15,
+   "classes": {
+    "world": 10,
+    "route": 4,
+    "connected": 1
+   },
+   "years": "1766–1769",
+   "uncovered": false
+  },
+  "boussole-1785": {
+   "count": 15,
+   "classes": {
+    "world": 12,
+    "route": 2,
+    "connected": 1
+   },
+   "years": "1785–1788",
+   "uncovered": false
+  },
+  "cabot-1497": {
+   "count": 15,
+   "classes": {
+    "world": 10,
+    "route": 4,
+    "connected": 1
+   },
+   "years": "1497–1497",
+   "uncovered": false
+  },
+  "cartier-1534": {
+   "count": 15,
+   "classes": {
+    "world": 9,
+    "route": 5,
+    "connected": 1
+   },
+   "years": "1534–1541",
+   "uncovered": false
+  },
+  "columbus-1492": {
+   "count": 15,
+   "classes": {
+    "world": 0,
+    "route": 4,
+    "connected": 11
+   },
+   "years": "1492–1504",
+   "uncovered": false
+  },
+  "cook-1768": {
+   "count": 15,
+   "classes": {
+    "world": 10,
+    "route": 4,
+    "connected": 1
+   },
+   "years": "1768–1771",
+   "uncovered": false
+  },
+  "cortes-1519": {
+   "count": 15,
+   "classes": {
+    "world": 3,
+    "route": 3,
+    "connected": 9
+   },
+   "years": "1519–1521",
+   "uncovered": false
+  },
+  "darwin-1831": {
+   "count": 15,
+   "classes": {
+    "world": 1,
+    "route": 13,
+    "connected": 1
+   },
+   "years": "1831–1836",
+   "uncovered": false
+  },
+  "dias-1487": {
+   "count": 15,
+   "classes": {
+    "world": 13,
+    "route": 1,
+    "connected": 1
+   },
+   "years": "1487–1488",
+   "uncovered": false
+  },
+  "drake-1577": {
+   "count": 15,
+   "classes": {
+    "world": 14,
+    "route": 0,
+    "connected": 1
+   },
+   "years": "1577–1580",
+   "uncovered": false
+  },
+  "faxian-399": {
+   "count": 15,
+   "classes": {
+    "world": 14,
+    "route": 0,
+    "connected": 1
+   },
+   "years": "399–414",
+   "uncovered": false
+  },
+  "gama-1497": {
+   "count": 15,
+   "classes": {
+    "world": 8,
+    "route": 3,
+    "connected": 4
+   },
+   "years": "1497–1499",
+   "uncovered": false
+  },
+  "ibnbattuta-1325": {
+   "count": 15,
+   "classes": {
+    "world": 1,
+    "route": 10,
+    "connected": 4
+   },
+   "years": "1325–1352",
+   "uncovered": false
+  },
+  "leoafricanus-1510": {
+   "count": 15,
+   "classes": {
+    "world": 9,
+    "route": 6,
+    "connected": 0
+   },
+   "years": "1514–1518",
+   "uncovered": false
+  },
+  "lewisclark-1804": {
+   "count": 15,
+   "classes": {
+    "world": 13,
+    "route": 2,
+    "connected": 0
+   },
+   "years": "1804–1806",
+   "uncovered": false
+  },
+  "magellan-1519": {
+   "count": 15,
+   "classes": {
+    "world": 9,
+    "route": 3,
+    "connected": 3
+   },
+   "years": "1519–1522",
+   "uncovered": false
+  },
+  "mungopark-1795": {
+   "count": 15,
+   "classes": {
+    "world": 7,
+    "route": 7,
+    "connected": 1
+   },
+   "years": "1795–1797",
+   "uncovered": false
+  },
+  "pizarro-1532": {
+   "count": 15,
+   "classes": {
+    "world": 12,
+    "route": 2,
+    "connected": 1
+   },
+   "years": "1532–1533",
+   "uncovered": false
+  },
+  "polo-1271": {
+   "count": 15,
+   "classes": {
+    "world": 4,
+    "route": 9,
+    "connected": 2
+   },
+   "years": "1271–1295",
+   "uncovered": false
+  },
+  "shackleton-1914": {
+   "count": 15,
+   "classes": {
+    "world": 2,
+    "route": 12,
+    "connected": 1
+   },
+   "years": "1914–1917",
+   "uncovered": false
+  },
+  "voyager-2": {
+   "count": 15,
+   "classes": {
+    "world": 15,
+    "route": 0,
+    "connected": 0
+   },
+   "years": "1977–1977",
+   "uncovered": false
+  },
+  "xuanzang-629": {
+   "count": 15,
+   "classes": {
+    "world": 10,
+    "route": 3,
+    "connected": 2
+   },
+   "years": "629–645",
+   "uncovered": false
+  }
+ },
+ "uncovered": []
+}

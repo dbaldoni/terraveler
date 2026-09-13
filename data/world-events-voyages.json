@@ -1,0 +1,3389 @@
+{
+ "apollo-11": {
+  "slug": "apollo-11",
+  "start_year": 1969,
+  "end_year": 1969,
+  "navigator_qid": "Q43653",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 0.674,
+    "longitude": 23.473
+   },
+   {
+    "latitude": 0.674,
+    "longitude": 23.4728
+   },
+   {
+    "latitude": 0.6742,
+    "longitude": 23.473
+   },
+   {
+    "latitude": 0.6734,
+    "longitude": 23.4727
+   },
+   {
+    "latitude": 0.6735,
+    "longitude": 23.475
+   },
+   {
+    "latitude": 0.674,
+    "longitude": 23.473
+   }
+  ],
+  "keywords": [
+   "Apollo 11",
+   "Lunar Module \"Eagle\" (Command Module \"Columbia\" remained in lunar orbit)",
+   "NASA / United States of America",
+   "Fulfil President Kennedy's 1961 goal of landing a man on the Moon and returning him safely to Earth before the decade's end; conduct the first human exploration of another world, deploying scientific instruments and collecting samples at the Sea of Tranquility.",
+   "Tranquility Base",
+   "Statio Tranquillitatis, Sea of Tranquility, the Moon",
+   "The ladder foot & MESA — first steps",
+   "~5 m west of the LM footpad, Statio Tranquillitatis",
+   "The flag & the television camera",
+   "~5 m north of the LM, Statio Tranquillitatis",
+   "EASEP — seismometer & laser reflector",
+   "~17 m south-southwest of the LM, Statio Tranquillitatis",
+   "Little West Crater",
+   "~60 m east of the LM, Statio Tranquillitatis",
+   "Return & ingress",
+   "At the LM ladder, Statio Tranquillitatis"
+  ]
+ },
+ "boudeuse-1766": {
+  "slug": "boudeuse-1766",
+  "start_year": 1766,
+  "end_year": 1769,
+  "navigator_qid": "Q153911",
+  "place_qids": [
+   "Q1199713",
+   "Q12193",
+   "Q1335",
+   "Q162126",
+   "Q163108",
+   "Q337524",
+   "Q3435209",
+   "Q3929",
+   "Q42000",
+   "Q48365",
+   "Q5465",
+   "Q8678",
+   "Q867864"
+  ],
+  "waypoints": [
+   {
+    "latitude": 48.3904,
+    "longitude": -4.4861
+   },
+   {
+    "latitude": -34.9011,
+    "longitude": -56.1645
+   },
+   {
+    "latitude": -51.5478,
+    "longitude": -58.0968
+   },
+   {
+    "latitude": -22.9068,
+    "longitude": -43.1729
+   },
+   {
+    "latitude": -53.68,
+    "longitude": -72.02
+   },
+   {
+    "latitude": -17.6167,
+    "longitude": -149.3
+   },
+   {
+    "latitude": -14.0,
+    "longitude": -171.0
+   },
+   {
+    "latitude": -15.4,
+    "longitude": 167.2
+   },
+   {
+    "latitude": -15.0,
+    "longitude": 148.0
+   },
+   {
+    "latitude": -7.05,
+    "longitude": 156.95
+   },
+   {
+    "latitude": -4.68,
+    "longitude": 152.85
+   },
+   {
+    "latitude": -6.13,
+    "longitude": 106.81
+   },
+   {
+    "latitude": -20.1619,
+    "longitude": 57.4989
+   },
+   {
+    "latitude": -33.906,
+    "longitude": 18.4185
+   },
+   {
+    "latitude": 48.6493,
+    "longitude": -2.0257
+   }
+  ],
+  "keywords": [
+   "Louis-Antoine de Bougainville",
+   "La Boudeuse & L'Étoile",
+   "King Louis XV of France (French Crown)",
+   "To hand the French Îles Malouines (Falkland) colony over to Spain, then cross the Pacific between the tropics in search of new lands and trade routes, completing a scientific circumnavigation carrying naturalists and astronomers.",
+   "Brest (departure from Nantes)",
+   "Brest, France",
+   "Montevideo, Río de la Plata",
+   "Montevideo, Uruguay",
+   "Isles Malouines (Falkland Islands), Port Louis",
+   "Falkland Islands (Port Louis, East Falkland)",
+   "Rio-Janeiro",
+   "Rio de Janeiro, Brazil",
+   "Straits of Magalhaens (Port Galant / Cape Pillar)",
+   "Strait of Magellan, Chile",
+   "Taïti (New Cythera / Nouvelle-Cythère)",
+   "Tahiti, French Polynesia",
+   "Archipel des Navigateurs (Isles of the Navigators)",
+   "Samoan Islands",
+   "Archipel des Grandes Cyclades (Tierra Austral del Espíritu Santo)",
+   "Vanuatu (Espiritu Santo)",
+   "Shoals east of New Holland (Shoal of Diana)",
+   "Coral Sea, off the outer Great Barrier Reef, Australia",
+   "Golfe de la Louisiade; Isle & Bay of Choiseul",
+   "Louisiade Archipelago (PNG) & Solomon Islands (Choiseul)",
+   "Port Praslin, New Britain",
+   "Port Praslin, New Ireland, Papua New Guinea",
+   "Batavia",
+   "Jakarta, Indonesia",
+   "Isle de France",
+   "Mauritius (Port Louis)",
+   "Cape of Good Hope (Table Bay)",
+   "Cape Town, South Africa",
+   "St. Maloes",
+   "Saint-Malo, France"
+  ]
+ },
+ "cabot-1497": {
+  "slug": "cabot-1497",
+  "start_year": 1497,
+  "end_year": 1497,
+  "navigator_qid": "Q85642",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 51.4538,
+    "longitude": -2.5973
+   },
+   {
+    "latitude": 46.29503,
+    "longitude": -60.93606
+   },
+   {
+    "latitude": 49.12119,
+    "longitude": -56.64034
+   },
+   {
+    "latitude": 51.4538,
+    "longitude": -2.5973
+   }
+  ],
+  "keywords": [
+   "John Cabot",
+   "the Matthew, of Bristol, with a crew of about eighteen",
+   "sailing from Bristol under letters patent from Henry VII",
+   "Bristol",
+   "Bristol, England",
+   "the mainland (new isle)",
+   "Cape Breton Island, Canada",
+   "the mainland, the territory of the Grand Cham",
+   "Newfoundland coast, Canada",
+   "Bristol",
+   "Bristol, England, United Kingdom"
+  ]
+ },
+ "cartier-1534": {
+  "slug": "cartier-1534",
+  "start_year": 1534,
+  "end_year": 1541,
+  "navigator_qid": "Q7321",
+  "place_qids": [
+   "Q128172",
+   "Q141903",
+   "Q163108",
+   "Q2936966",
+   "Q2960771",
+   "Q3339246",
+   "Q3437623",
+   "Q3593077",
+   "Q392161",
+   "Q5034593",
+   "Q544356",
+   "Q575033",
+   "Q728779",
+   "Q815831"
+  ],
+  "waypoints": [
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   },
+   {
+    "latitude": 48.65,
+    "longitude": -53.11
+   },
+   {
+    "latitude": 47.85,
+    "longitude": -61.15
+   },
+   {
+    "latitude": 51.5,
+    "longitude": -56.8
+   },
+   {
+    "latitude": 48.8,
+    "longitude": -64.5
+   },
+   {
+    "latitude": 49.5,
+    "longitude": -63
+   },
+   {
+    "latitude": 51.033,
+    "longitude": -55.833
+   },
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   },
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   },
+   {
+    "latitude": 51.6,
+    "longitude": -56.8
+   },
+   {
+    "latitude": 49.75637,
+    "longitude": -53.18324
+   },
+   {
+    "latitude": 49.5,
+    "longitude": -63
+   },
+   {
+    "latitude": 48.235,
+    "longitude": -69.033
+   },
+   {
+    "latitude": 46.885,
+    "longitude": -71.016
+   },
+   {
+    "latitude": 46.8139,
+    "longitude": -71.2082
+   },
+   {
+    "latitude": 45.5089,
+    "longitude": -73.5617
+   },
+   {
+    "latitude": 46.8139,
+    "longitude": -71.2082
+   },
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   },
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   },
+   {
+    "latitude": 46.786,
+    "longitude": -71.356
+   },
+   {
+    "latitude": 46.8139,
+    "longitude": -71.2082
+   },
+   {
+    "latitude": 45.5089,
+    "longitude": -73.5617
+   },
+   {
+    "latitude": 46.833,
+    "longitude": -71.366
+   },
+   {
+    "latitude": 48.649,
+    "longitude": -2.025
+   }
+  ],
+  "keywords": [
+   "Jacques Cartier",
+   "La Grande Hermine and the ships of three voyages from Saint-Malo",
+   "sailing from Saint-Malo for King Francis I of France",
+   "St. Malo",
+   "Saint-Malo, Brittany, France",
+   "Cape Bonavista",
+   "Cape Bonavista, Newfoundland and Labrador, Canada",
+   "Bird rocks",
+   "Îles aux Oiseaux (Bird Rocks), Quebec, Canada",
+   "strait of Belle Isle",
+   "Strait of Belle Isle, Newfoundland and Labrador/Quebec, Canada",
+   "Gaspé",
+   "Gaspé Peninsula, Quebec, Canada",
+   "Assumption island",
+   "Anticosti Island, Quebec, Canada",
+   "Belle-Isle",
+   "Belle Isle, Newfoundland and Labrador, Canada",
+   "St. Malo",
+   "Saint-Malo, Brittany, France",
+   "St. Malo",
+   "Saint-Malo, Brittany, France",
+   "strait of Belle Isle",
+   "Strait of Belle Isle, Newfoundland and Labrador/Quebec, Canada",
+   "isle of Birds",
+   "Funk Island, Newfoundland and Labrador, Canada",
+   "Anticosti island",
+   "Anticosti Island, Quebec, Canada",
+   "river of the Saguenay",
+   "Saguenay River (mouth), Quebec, Canada",
+   "island of Orleans",
+   "Île d'Orléans, Quebec, Canada",
+   "Stadacona",
+   "Quebec City, Quebec, Canada",
+   "Hochelaga",
+   "Montreal, Quebec, Canada",
+   "Stadacona",
+   "Quebec City, Quebec, Canada",
+   "St. Malo",
+   "Saint-Malo, Brittany, France",
+   "St. Malo",
+   "Saint-Malo, Brittany, France",
+   "cape Rouge",
+   "Cap-Rouge, Quebec, Canada",
+   "Stadacona",
+   "Quebec City, Quebec, Canada",
+   "Hochelaga",
+   "Montreal, Quebec, Canada",
+   "the building on the river of Cape Rouge and in the one on the cliff above",
+   "Charlesbourg-Royal, Quebec, Canada",
+   "St. Malo",
+   "Saint-Malo, Brittany, France"
+  ]
+ },
+ "columbus-1492": {
+  "slug": "columbus-1492",
+  "start_year": 1492,
+  "end_year": 1504,
+  "navigator_qid": "Q7322",
+  "place_qids": [
+   "Q105967",
+   "Q1140993",
+   "Q1144797",
+   "Q15682",
+   "Q1638699",
+   "Q17012",
+   "Q17054",
+   "Q1859950",
+   "Q2037402",
+   "Q210887",
+   "Q217262",
+   "Q25276415",
+   "Q31878253",
+   "Q34820",
+   "Q34941899",
+   "Q41211",
+   "Q593137",
+   "Q597",
+   "Q622030",
+   "Q766",
+   "Q784",
+   "Q8717",
+   "Q890879"
+  ],
+  "waypoints": [
+   {
+    "latitude": 37.22765,
+    "longitude": -6.89539
+   },
+   {
+    "latitude": 28.11924,
+    "longitude": -17.22575
+   },
+   {
+    "latitude": 24.03438,
+    "longitude": -74.48514
+   },
+   {
+    "latitude": 23.82631,
+    "longitude": -74.93268
+   },
+   {
+    "latitude": 23.25,
+    "longitude": -75.1
+   },
+   {
+    "latitude": 22.75,
+    "longitude": -74.2
+   },
+   {
+    "latitude": 21.25,
+    "longitude": -75.75
+   },
+   {
+    "latitude": 19.80702,
+    "longitude": -73.37661
+   },
+   {
+    "latitude": 19.7625,
+    "longitude": -72.0175
+   },
+   {
+    "latitude": 19.15426,
+    "longitude": -69.34749
+   },
+   {
+    "latitude": 36.97262,
+    "longitude": -25.10265
+   },
+   {
+    "latitude": 38.70775,
+    "longitude": -9.13659
+   },
+   {
+    "latitude": 37.22765,
+    "longitude": -6.89539
+   },
+   {
+    "latitude": 36.52974,
+    "longitude": -6.2929
+   },
+   {
+    "latitude": 28.11924,
+    "longitude": -17.22575
+   },
+   {
+    "latitude": 15.41667,
+    "longitude": -61.33333
+   },
+   {
+    "latitude": 16.25,
+    "longitude": -61.583
+   },
+   {
+    "latitude": 18.46528,
+    "longitude": -66.11667
+   },
+   {
+    "latitude": 19.6833,
+    "longitude": -72.0333
+   },
+   {
+    "latitude": 21.5,
+    "longitude": -79.5
+   },
+   {
+    "latitude": 18.18,
+    "longitude": -77.4
+   },
+   {
+    "latitude": 19.82213,
+    "longitude": -71.0553
+   },
+   {
+    "latitude": 36.52974,
+    "longitude": -6.2929
+   },
+   {
+    "latitude": 36.77614,
+    "longitude": -6.35348
+   },
+   {
+    "latitude": 17.05553,
+    "longitude": -25.1723
+   },
+   {
+    "latitude": 10.04553,
+    "longitude": -61.92471
+   },
+   {
+    "latitude": 9.05,
+    "longitude": -62.05
+   },
+   {
+    "latitude": 18.4625,
+    "longitude": -69.93611
+   },
+   {
+    "latitude": 36.52974,
+    "longitude": -6.2929
+   },
+   {
+    "latitude": 36.52974,
+    "longitude": -6.2929
+   },
+   {
+    "latitude": 14.61137,
+    "longitude": -60.96208
+   },
+   {
+    "latitude": 16.47133,
+    "longitude": -85.87883
+   },
+   {
+    "latitude": 15.001,
+    "longitude": -83.147
+   },
+   {
+    "latitude": 8.24141,
+    "longitude": -81.09035
+   },
+   {
+    "latitude": 18.43561,
+    "longitude": -77.20234
+   },
+   {
+    "latitude": 36.77614,
+    "longitude": -6.35348
+   },
+   {
+    "latitude": 37.38863,
+    "longitude": -5.99534
+   }
+  ],
+  "keywords": [
+   "Christopher Columbus",
+   "Santa María, Pinta and Niña, and the fleets of the later voyages",
+   "sailing from Palos de la Frontera for the Crown of Castile",
+   "Palos",
+   "Palos de la Frontera, Huelva, Spain",
+   "Gomera",
+   "La Gomera, Canary Islands, Spain",
+   "Guanahani",
+   "San Salvador Island, Bahamas",
+   "Concepcion, La, island",
+   "Rum Cay, Bahamas",
+   "Guaigo",
+   "Long Island, Bahamas",
+   "Crooked Island",
+   "Crooked Island, Bahamas",
+   "Cuba",
+   "Cuba (near Bariay, Holguín Province, Cuba)",
+   "Española",
+   "Hispaniola, near Môle Saint-Nicolas, Haiti",
+   "Navidad",
+   "Site of La Navidad, near present-day Caracol, Nord, Haiti",
+   "Bay of Samana",
+   "Samaná Bay, Dominican Republic",
+   "Santa Maria",
+   "Santa Maria Island, Azores, Portugal",
+   "Lisbon",
+   "Lisbon, Portugal",
+   "Palos",
+   "Palos de la Frontera, Huelva, Spain",
+   "Cadiz",
+   "Cádiz, Spain",
+   "Gomera",
+   "La Gomera, Canary Islands, Spain",
+   "Dominica",
+   "Dominica, Caribbean",
+   "Guadeloupe",
+   "Guadeloupe, France (Caribbean)",
+   "St. John the Baptist",
+   "San Juan, Puerto Rico",
+   "Villa de la Navidad",
+   "Navidad, near present-day Limonade, Haiti",
+   "Queen's Garden",
+   "Jardines de la Reina, Cienfuegos area, Cuba",
+   "Yamaye",
+   "Jamaica",
+   "Isabella, in Española",
+   "Isabela, Dominican Republic",
+   "Cadiz",
+   "Cádiz, Spain",
+   "San Lucar de Barrameda",
+   "Sanlúcar de Barrameda, Cádiz, Spain",
+   "the Cape Verde Islands",
+   "Cape Verde Islands, Cabo Verde",
+   "Punta del Arenal, island of Trinidad",
+   "Icacos Point, Trinidad and Tobago",
+   "Boca del Drago",
+   "Mouth of the Orinoco River, Paria Peninsula, Venezuela",
+   "Santo Domingo",
+   "Santo Domingo, Dominican Republic",
+   "Cadiz",
+   "Cádiz, Spain",
+   "Cadiz",
+   "Cádiz, Spain",
+   "Martinique",
+   "Martinique, Caribbean",
+   "Guanaja",
+   "Guanaja Island, Bay Islands, Honduras",
+   "Cape Gracias á Dios",
+   "Cape Gracias a Dios, Nicaragua/Honduras border",
+   "Veragua",
+   "Veraguas, Panama",
+   "Jamaica",
+   "St. Ann's Bay, Jamaica",
+   "Sanlúcar de Barrameda",
+   "Sanlúcar de Barrameda, Cádiz, Spain",
+   "Seville",
+   "Seville, Spain"
+  ]
+ },
+ "cook-1768": {
+  "slug": "cook-1768",
+  "start_year": 1768,
+  "end_year": 1771,
+  "navigator_qid": "Q7324",
+  "place_qids": [
+   "Q1011096",
+   "Q1048789",
+   "Q118863",
+   "Q1199713",
+   "Q1335",
+   "Q134983322",
+   "Q14328",
+   "Q1469472",
+   "Q1728345",
+   "Q183113",
+   "Q1861129",
+   "Q21899019",
+   "Q21900556",
+   "Q21915221",
+   "Q224943",
+   "Q2308650",
+   "Q25473",
+   "Q2675109",
+   "Q34497",
+   "Q42000",
+   "Q43382",
+   "Q46197",
+   "Q498841",
+   "Q521020",
+   "Q527474",
+   "Q54504",
+   "Q5465",
+   "Q657187",
+   "Q673400",
+   "Q847008",
+   "Q8678",
+   "Q894682"
+  ],
+  "waypoints": [
+   {
+    "latitude": 50.37141,
+    "longitude": -4.14245
+   },
+   {
+    "latitude": 32.64965,
+    "longitude": -16.90868
+   },
+   {
+    "latitude": 28.46718,
+    "longitude": -16.25078
+   },
+   {
+    "latitude": -22.91101,
+    "longitude": -43.20937
+   },
+   {
+    "latitude": -34.90589,
+    "longitude": -56.19131
+   },
+   {
+    "latitude": -55.983,
+    "longitude": -66.983
+   },
+   {
+    "latitude": -54.8,
+    "longitude": -64.0
+   },
+   {
+    "latitude": -17.65,
+    "longitude": -149.42
+   },
+   {
+    "latitude": -17.5389,
+    "longitude": -149.8295
+   },
+   {
+    "latitude": -16.7167,
+    "longitude": -151.0167
+   },
+   {
+    "latitude": -16.75,
+    "longitude": -151.43
+   },
+   {
+    "latitude": -16.5,
+    "longitude": -151.75
+   },
+   {
+    "latitude": -22.47785,
+    "longitude": -151.34834
+   },
+   {
+    "latitude": -38.683,
+    "longitude": 178.017
+   },
+   {
+    "latitude": -39,
+    "longitude": 176
+   },
+   {
+    "latitude": -45.75,
+    "longitude": 166.85
+   },
+   {
+    "latitude": -41.2,
+    "longitude": 174.1
+   },
+   {
+    "latitude": -33.98151,
+    "longitude": 151.17962
+   },
+   {
+    "latitude": -33.84337,
+    "longitude": 151.21895
+   },
+   {
+    "latitude": -24.13143,
+    "longitude": 151.82371
+   },
+   {
+    "latitude": -22.2245,
+    "longitude": 149.92611
+   },
+   {
+    "latitude": -20.3,
+    "longitude": 148.9
+   },
+   {
+    "latitude": -15.467,
+    "longitude": 145.251
+   },
+   {
+    "latitude": -10.687,
+    "longitude": 142.531
+   },
+   {
+    "latitude": -10.5,
+    "longitude": 121.8
+   },
+   {
+    "latitude": -6.2088,
+    "longitude": 106.8456
+   },
+   {
+    "latitude": -6.0167,
+    "longitude": 106.7333
+   },
+   {
+    "latitude": -6.62,
+    "longitude": 105.24
+   },
+   {
+    "latitude": -33.9258,
+    "longitude": 18.4232
+   },
+   {
+    "latitude": -15.94,
+    "longitude": -5.72
+   },
+   {
+    "latitude": -7.933,
+    "longitude": -14.367
+   },
+   {
+    "latitude": 38.5833,
+    "longitude": -28.7
+   },
+   {
+    "latitude": 51.222,
+    "longitude": 1.404
+   },
+   {
+    "latitude": 51.478,
+    "longitude": -0.026
+   }
+  ],
+  "keywords": [
+   "James Cook",
+   "HM Bark Endeavour",
+   "Royal Society (Transit of Venus observation) & the Admiralty, under secret instructions from King George III",
+   "Observe the 1769 Transit of Venus from Tahiti for the Royal Society, then search the South Pacific under secret Admiralty instructions for the supposed southern continent — charting New Zealand and the east coast of New Holland (Australia).",
+   "Plymouth",
+   "Plymouth, England, United Kingdom",
+   "Funchall",
+   "Funchal, Madeira, Portugal",
+   "Santa Cruz",
+   "Santa Cruz de Tenerife, Canary Islands, Spain",
+   "Rio de Janeiro",
+   "Rio de Janeiro, Brazil",
+   "Monte Video",
+   "Montevideo, Uruguay",
+   "Strait Le Maire and Cape Horn",
+   "Strait of Le Maire and Cape Horn, Tierra del Fuego, Chile/Argentina",
+   "Terra del Fuego",
+   "Tierra del Fuego, Staten Island anchorage, Argentina",
+   "King George's Island",
+   "Tahiti, Society Islands, French Polynesia",
+   "Eimeo",
+   "Moorea, Society Islands, French Polynesia",
+   "Huahine",
+   "Huahine, Society Islands, French Polynesia",
+   "Ulietea",
+   "Raiatea, Society Islands, French Polynesia",
+   "Bolabola",
+   "Bora Bora, Society Islands, French Polynesia",
+   "Ohetiroa",
+   "Rurutu, Austral Islands, French Polynesia",
+   "Poverty Bay",
+   "Poverty Bay, Gisborne District, North Island, New Zealand",
+   "North Island of New Zealand",
+   "North Island, New Zealand",
+   "Dusky Bay",
+   "Dusky Sound, South Island, New Zealand",
+   "Queen Charlotte's Sound",
+   "Queen Charlotte Sound, South Island, New Zealand",
+   "Botany Bay",
+   "Botany Bay, New South Wales, Australia",
+   "Port Jackson",
+   "Sydney Harbour, New South Wales, Australia",
+   "Bustard Bay",
+   "Bustard Bay, Queensland, Australia",
+   "Thirsty Sound",
+   "Thirsty Sound, Queensland, Australia",
+   "Whitsunday Passage",
+   "Whitsunday Passage, Queensland, Australia",
+   "Endeavour River",
+   "Endeavour River, Cooktown, Queensland, Australia",
+   "the extremity of New Wales",
+   "Cape York, Queensland, Australia",
+   "Savu",
+   "Savu (Sawu), East Nusa Tenggara, Indonesia",
+   "Batavia",
+   "Jakarta, Java, Indonesia",
+   "Onrust",
+   "Onrust Island, Kepulauan Seribu, Jakarta, Indonesia",
+   "Princes Island",
+   "Panaitan Island, Banten, Indonesia",
+   "Table Bay",
+   "Cape Town, Western Cape, South Africa",
+   "St. Helena",
+   "Saint Helena, British Overseas Territory",
+   "Ascension Island",
+   "Ascension Island, British Overseas Territory, South Atlantic Ocean",
+   "Fayal",
+   "Faial Island, Azores, Portugal",
+   "Deal",
+   "Deal, Kent, England",
+   "Deptford",
+   "Deptford, London, England, United Kingdom"
+  ]
+ },
+ "cortes-1519": {
+  "slug": "cortes-1519",
+  "start_year": 1519,
+  "end_year": 1521,
+  "navigator_qid": "Q7326",
+  "place_qids": [
+   "Q1053364",
+   "Q117040",
+   "Q1489",
+   "Q16242828",
+   "Q1696230",
+   "Q173270",
+   "Q20119933",
+   "Q20232353",
+   "Q2047652",
+   "Q5923757",
+   "Q661315",
+   "Q689987",
+   "Q7380613",
+   "Q7674191",
+   "Q796925"
+  ],
+  "waypoints": [
+   {
+    "latitude": 20.02143,
+    "longitude": -75.82949
+   },
+   {
+    "latitude": 20.43206,
+    "longitude": -86.92069
+   },
+   {
+    "latitude": 17.65429,
+    "longitude": -92.81756
+   },
+   {
+    "latitude": 19.20937,
+    "longitude": -96.13142
+   },
+   {
+    "latitude": 19.637,
+    "longitude": -96.406
+   },
+   {
+    "latitude": 19.11731,
+    "longitude": -96.10893
+   },
+   {
+    "latitude": 19.19028,
+    "longitude": -96.15333
+   },
+   {
+    "latitude": 19.31671,
+    "longitude": -98.23861
+   },
+   {
+    "latitude": 19.06782,
+    "longitude": -98.31063
+   },
+   {
+    "latitude": 19.35886,
+    "longitude": -99.09254
+   },
+   {
+    "latitude": 19.35377,
+    "longitude": -99.13589
+   },
+   {
+    "latitude": 19.35377,
+    "longitude": -99.13589
+   },
+   {
+    "latitude": 19.45536,
+    "longitude": -99.19072
+   },
+   {
+    "latitude": 19.65709,
+    "longitude": -98.74015
+   },
+   {
+    "latitude": 19.31671,
+    "longitude": -98.23861
+   },
+   {
+    "latitude": 18.96806,
+    "longitude": -97.9025
+   },
+   {
+    "latitude": 19.47559,
+    "longitude": -98.8554
+   },
+   {
+    "latitude": 19.35886,
+    "longitude": -99.09254
+   },
+   {
+    "latitude": 19.35377,
+    "longitude": -99.13589
+   },
+   {
+    "latitude": 19.45132,
+    "longitude": -99.13705
+   },
+   {
+    "latitude": 19.34986,
+    "longitude": -99.16198
+   },
+   {
+    "latitude": 19.35377,
+    "longitude": -99.13589
+   }
+  ],
+  "keywords": [
+   "Hernán Cortés",
+   "the Spanish expedition and its Tlaxcalan and indigenous allies",
+   "sailing from Cuba, then acting in the name of King Charles I of Spain",
+   "An expedition from Cuba to the mainland of Mexico that, defying its own governor, marched inland, allied with the enemies of the Aztecs, and besieged and destroyed Tenochtitlan — the conquest of the Aztec empire.",
+   "Cuba",
+   "Santiago de Cuba, Cuba",
+   "island Cozumel",
+   "Cozumel Island, Quintana Roo, Mexico",
+   "Tabasco",
+   "Grijalva River (near modern-day Frontera), Tabasco, Mexico",
+   "San Juan de Ulua",
+   "San Juan de Ulúa, Veracruz, Mexico",
+   "Quiahuitzlan",
+   "Quiahuitzlan, Veracruz, Mexico",
+   "Cempoalá",
+   "Cempoala, Veracruz, Mexico",
+   "Villa Rica de la Vera Cruz",
+   "Veracruz, Veracruz, Mexico",
+   "Tlascalla",
+   "Tlaxcala, Tlaxcala, Mexico",
+   "Cholulla",
+   "Cholula, Puebla, Mexico",
+   "Iztapalapan",
+   "Iztapalapa, Mexico City, Mexico",
+   "Mexico",
+   "Mexico City, Mexico",
+   "Mexico",
+   "Mexico City, Mexico",
+   "Tlacupa",
+   "Tacuba, Mexico City, Mexico",
+   "Otumpan",
+   "Otumba, State of Mexico, Mexico",
+   "Tlascalla",
+   "Tlaxcala, Tlaxcala, Mexico",
+   "Tepeaca",
+   "Tepeaca, Puebla, Mexico",
+   "Tezcuco",
+   "Texcoco, State of Mexico, Mexico",
+   "Iztapalapan",
+   "Iztapalapa, Mexico City, Mexico",
+   "Mexico",
+   "Mexico City, Mexico",
+   "Tlatelolco",
+   "Tlatelolco, Mexico City, Mexico",
+   "Mexico",
+   "Coyoacán, Mexico City, Mexico",
+   "Mexico",
+   "Mexico City, Mexico"
+  ]
+ },
+ "darwin-1831": {
+  "slug": "darwin-1831",
+  "start_year": 1831,
+  "end_year": 1836,
+  "navigator_qid": "Q1035",
+  "place_qids": [
+   "Q1048209",
+   "Q105037",
+   "Q1245018",
+   "Q1335",
+   "Q14440",
+   "Q1486",
+   "Q16258",
+   "Q1880",
+   "Q215074",
+   "Q2656389",
+   "Q33986",
+   "Q3437375",
+   "Q34497",
+   "Q36004",
+   "Q36947",
+   "Q3751",
+   "Q40191",
+   "Q40846",
+   "Q42000",
+   "Q46197",
+   "Q478029",
+   "Q48344",
+   "Q54108",
+   "Q54504",
+   "Q5465",
+   "Q704257",
+   "Q800201",
+   "Q812091",
+   "Q8678",
+   "Q955668"
+  ],
+  "waypoints": [
+   {
+    "latitude": 50.3763,
+    "longitude": -4.1716
+   },
+   {
+    "latitude": 28.29358,
+    "longitude": -16.62145
+   },
+   {
+    "latitude": 14.9167,
+    "longitude": -23.5083
+   },
+   {
+    "latitude": -12.9718,
+    "longitude": -38.5011
+   },
+   {
+    "latitude": -22.9068,
+    "longitude": -43.1729
+   },
+   {
+    "latitude": -34.903,
+    "longitude": -56.164
+   },
+   {
+    "latitude": -34.6037,
+    "longitude": -58.3816
+   },
+   {
+    "latitude": -34.9081,
+    "longitude": -54.9581
+   },
+   {
+    "latitude": -40.8,
+    "longitude": -62.983
+   },
+   {
+    "latitude": -38.7196,
+    "longitude": -62.2724
+   },
+   {
+    "latitude": -49.3067,
+    "longitude": -67.7267
+   },
+   {
+    "latitude": -51.6,
+    "longitude": -57.75
+   },
+   {
+    "latitude": -53.615,
+    "longitude": -70.917
+   },
+   {
+    "latitude": -44.6,
+    "longitude": -73.8
+   },
+   {
+    "latitude": -33.0458,
+    "longitude": -71.6197
+   },
+   {
+    "latitude": -36.827,
+    "longitude": -73.05
+   },
+   {
+    "latitude": -20.2133,
+    "longitude": -70.1529
+   },
+   {
+    "latitude": -12.0611,
+    "longitude": -77.1333
+   },
+   {
+    "latitude": -1.3,
+    "longitude": -90.45
+   },
+   {
+    "latitude": -17.6509,
+    "longitude": -149.426
+   },
+   {
+    "latitude": -35.226,
+    "longitude": 174.12
+   },
+   {
+    "latitude": -33.86778,
+    "longitude": 151.21
+   },
+   {
+    "latitude": -42.8806,
+    "longitude": 147.325
+   },
+   {
+    "latitude": -35.02278,
+    "longitude": 117.88139
+   },
+   {
+    "latitude": -12.1642,
+    "longitude": 96.871
+   },
+   {
+    "latitude": -20.2,
+    "longitude": 57.5
+   },
+   {
+    "latitude": -33.9249,
+    "longitude": 18.4241
+   },
+   {
+    "latitude": -15.965,
+    "longitude": -5.708
+   },
+   {
+    "latitude": -7.933,
+    "longitude": -14.367
+   },
+   {
+    "latitude": -12.9777,
+    "longitude": -38.5016
+   },
+   {
+    "latitude": -8.05849,
+    "longitude": -34.88482
+   },
+   {
+    "latitude": 38.7223,
+    "longitude": -27.2211
+   },
+   {
+    "latitude": 50.154,
+    "longitude": -5.07
+   }
+  ],
+  "keywords": [
+   "Charles Darwin",
+   "HMS Beagle, under Robert FitzRoy",
+   "sailing from Plymouth on an Admiralty survey of South America",
+   "Devonport",
+   "Devonport, Plymouth, England, United Kingdom",
+   "Teneriffe",
+   "Tenerife, Canary Islands, Spain",
+   "Porto Praya, in St. Jago, the chief island of the Cape de Verd archipelago",
+   "Praia, Santiago, Cape Verde",
+   "Bahia",
+   "Salvador, Bahia, Brazil",
+   "Rio de Janeiro",
+   "Rio de Janeiro, Brazil",
+   "Monte Video",
+   "Montevideo, Uruguay",
+   "Buenos Ayres",
+   "Buenos Aires, Argentina",
+   "Maldonado",
+   "Maldonado, Uruguay",
+   "Rio Negro",
+   "Río Negro, Argentina",
+   "Bahia Blanca",
+   "Bahía Blanca, Buenos Aires Province, Argentina",
+   "Port St. Julian",
+   "Puerto San Julián, Santa Cruz, Argentina",
+   "Berkeley Sound, in East Falkland Island",
+   "Berkeley Sound, East Falkland, Falkland Islands",
+   "Port Famine",
+   "Puerto del Hambre, Magallanes, Chile",
+   "Low's Harbour",
+   "Low's Harbour, Chonos Archipelago, Chile",
+   "Valparaiso",
+   "Valparaíso, Chile",
+   "Concepcion",
+   "Concepción, Biobío, Chile",
+   "Iquique",
+   "Iquique, Tarapacá Region, Chile",
+   "Callao",
+   "Callao, Peru",
+   "Charles Island",
+   "Floreana Island, Galápagos, Ecuador",
+   "Tahiti",
+   "Tahiti, Society Islands, French Polynesia",
+   "New Zealand",
+   "Bay of Islands, Northland, New Zealand",
+   "Port Jackson",
+   "Sydney, New South Wales, Australia",
+   "Hobart Town",
+   "Hobart, Tasmania, Australia",
+   "King George's Sound",
+   "Albany, Western Australia, Australia",
+   "Keeling Island",
+   "Cocos (Keeling) Islands, Australia",
+   "Mauritius",
+   "Mauritius, Republic of Mauritius",
+   "Cape Town",
+   "Cape Town, South Africa",
+   "St. Helena",
+   "Saint Helena, British Overseas Territory",
+   "Ascension",
+   "Ascension Island, British Overseas Territory",
+   "Bahia",
+   "Salvador, Bahia, Brazil",
+   "Pernambuco",
+   "Recife, Pernambuco, Brazil",
+   "Terceira",
+   "Terceira, Azores, Portugal",
+   "Falmouth",
+   "Falmouth, Cornwall, England"
+  ]
+ },
+ "dias-1487": {
+  "slug": "dias-1487",
+  "start_year": 1487,
+  "end_year": 1488,
+  "navigator_qid": "Q130377",
+  "place_qids": [
+   "Q1130009",
+   "Q159325",
+   "Q2879573",
+   "Q4092",
+   "Q597",
+   "Q858128",
+   "Q968662",
+   "Q995615"
+  ],
+  "waypoints": [
+   {
+    "latitude": 38.71,
+    "longitude": -9.14
+   },
+   {
+    "latitude": 5.08,
+    "longitude": -1.35
+   },
+   {
+    "latitude": -21.77,
+    "longitude": 13.96
+   },
+   {
+    "latitude": -26.65,
+    "longitude": 15.15
+   },
+   {
+    "latitude": -37.0,
+    "longitude": 14.0
+   },
+   {
+    "latitude": -34.18,
+    "longitude": 22.14
+   },
+   {
+    "latitude": -33.87,
+    "longitude": 25.62
+   },
+   {
+    "latitude": -33.5,
+    "longitude": 27.13
+   },
+   {
+    "latitude": -34.36,
+    "longitude": 18.47
+   },
+   {
+    "latitude": 38.71,
+    "longitude": -9.14
+   }
+  ],
+  "keywords": [
+   "Bartolomeu Dias",
+   "two caravels and a storeship, the first ever sent south with supplies",
+   "sailing from Lisbon for King John II of Portugal",
+   "Lisbon",
+   "Lisbon, Portugal",
+   "Sao Jorge da Mina",
+   "Elmina, Ghana",
+   "Cape Cross",
+   "Cape Cross, Namibia",
+   "Angra Pequena",
+   "Luderitz, Namibia",
+   "Driven south by the gale",
+   "open ocean, south-west of the Cape",
+   "Sao Bras",
+   "Mossel Bay, South Africa",
+   "Algoa Bay",
+   "Algoa Bay, South Africa",
+   "Rio do Infante",
+   "Great Fish River, South Africa",
+   "Cabo das Tormentas",
+   "Cape of Good Hope, South Africa",
+   "Lisbon",
+   "Lisbon, Portugal"
+  ]
+ },
+ "drake-1577": {
+  "slug": "drake-1577",
+  "start_year": 1577,
+  "end_year": 1580,
+  "navigator_qid": "Q36517",
+  "place_qids": [
+   "Q105037",
+   "Q111296110",
+   "Q1142129",
+   "Q1635008",
+   "Q19151",
+   "Q20548818",
+   "Q2086056",
+   "Q2203",
+   "Q3023340",
+   "Q3142013",
+   "Q33986",
+   "Q3445630",
+   "Q35827",
+   "Q3757",
+   "Q4092",
+   "Q43382",
+   "Q48365",
+   "Q586659",
+   "Q955668"
+  ],
+  "waypoints": [
+   {
+    "latitude": 50.37141,
+    "longitude": -4.14245
+   },
+   {
+    "latitude": 42.08813,
+    "longitude": -8.84851
+   },
+   {
+    "latitude": 15.07778,
+    "longitude": -23.62472
+   },
+   {
+    "latitude": 8.48933,
+    "longitude": -13.20805
+   },
+   {
+    "latitude": -22.9,
+    "longitude": -43.2
+   },
+   {
+    "latitude": -34.7,
+    "longitude": -57.9
+   },
+   {
+    "latitude": -49.30695,
+    "longitude": -67.72979
+   },
+   {
+    "latitude": -53.5,
+    "longitude": -70
+   },
+   {
+    "latitude": -38.36602,
+    "longitude": -73.91439
+   },
+   {
+    "latitude": -33.04585,
+    "longitude": -71.61967
+   },
+   {
+    "latitude": -18.47853,
+    "longitude": -70.32114
+   },
+   {
+    "latitude": -11.94967,
+    "longitude": -77.12881
+   },
+   {
+    "latitude": 0.65398,
+    "longitude": -80.06611
+   },
+   {
+    "latitude": 8.4,
+    "longitude": -79.1
+   },
+   {
+    "latitude": 15.83134,
+    "longitude": -96.31976
+   },
+   {
+    "latitude": 37.99589,
+    "longitude": -123.02264
+   },
+   {
+    "latitude": 42.83816,
+    "longitude": -124.56484
+   },
+   {
+    "latitude": 10,
+    "longitude": -150
+   },
+   {
+    "latitude": 13.45012,
+    "longitude": 144.75771
+   },
+   {
+    "latitude": 0.7852,
+    "longitude": 127.38323
+   },
+   {
+    "latitude": -7.49167,
+    "longitude": 110.00444
+   },
+   {
+    "latitude": -6.16809,
+    "longitude": 106.81098
+   },
+   {
+    "latitude": -34.3573,
+    "longitude": 18.4721
+   },
+   {
+    "latitude": 15,
+    "longitude": -23.5
+   },
+   {
+    "latitude": 50.3714,
+    "longitude": -4.1427
+   }
+  ],
+  "keywords": [
+   "Francis Drake",
+   "Pelican, renamed Golden Hind",
+   "sailing from Plymouth under a commission from Elizabeth I kept deliberately vague",
+   "Plimmouth",
+   "Plymouth, England, United Kingdom",
+   "Bayona",
+   "Baiona, Galicia, Spain",
+   "S. Jago, one of the Islands of Caho Verde",
+   "Santiago, Cape Verde",
+   "Sierra Leona",
+   "Sierra Leone, West Africa",
+   "coast of Brasill",
+   "coast near Rio de Janeiro, Brazil",
+   "Rio de la Plata",
+   "Río de la Plata, Argentina/Uruguay",
+   "Port S. Julian",
+   "Puerto San Julián, Santa Cruz, Argentina",
+   "the streights of Magellan",
+   "Strait of Magellan, southern Chile",
+   "La Mocha",
+   "Mocha Island, Chile",
+   "Valperizo",
+   "Valparaíso, Chile",
+   "Arica",
+   "Arica, Arica y Parinacota, Chile",
+   "Lima called ui?m!^''° * -^^ Callao",
+   "Callao, Lima, Peru",
+   "Cape de San Francisco",
+   "Cabo San Francisco, Esmeraldas, Ecuador",
+   "Panama",
+   "Pearl Islands, Gulf of Panama, Panama",
+   "Guatulco",
+   "Huatulco, Oaxaca, Mexico",
+   "Noua Albion",
+   "Point Reyes, California, USA",
+   "fortie-three degrees towardes the pole Arcticke",
+   "near Cape Blanco, Oregon, USA",
+   "maine Ocean",
+   "mid-Pacific Ocean",
+   "certaine Islands 8. degrees to the Northward of the line",
+   "Mariana Islands, Northern Mariana Islands/Guam",
+   "Ternate",
+   "Ternate, North Maluku, Indonesia",
+   "Java",
+   "Java, Indonesia",
+   "Java",
+   "Banten, Java, Indonesia",
+   "Cape Hope",
+   "Cape of Good Hope, South Africa",
+   "Cape Verde",
+   "Cape Verde (Cabo Verde), West Africa",
+   "Plymouth",
+   "Plymouth, England, United Kingdom"
+  ]
+ },
+ "faxian-399": {
+  "slug": "faxian-399",
+  "start_year": 399,
+  "end_year": 414,
+  "navigator_qid": "Q312978",
+  "place_qids": [
+   "Q10906766",
+   "Q1113311",
+   "Q118278",
+   "Q12832321",
+   "Q139570137",
+   "Q1509463",
+   "Q156093",
+   "Q161750",
+   "Q176767",
+   "Q235389",
+   "Q30610827",
+   "Q3757",
+   "Q42070",
+   "Q6501000",
+   "Q80484",
+   "Q863683"
+  ],
+  "waypoints": [
+   {
+    "latitude": 34.261,
+    "longitude": 108.94234
+   },
+   {
+    "latitude": 41.5,
+    "longitude": 103.5
+   },
+   {
+    "latitude": 42.5,
+    "longitude": 105
+   },
+   {
+    "latitude": 41.76539,
+    "longitude": 86.13417
+   },
+   {
+    "latitude": 37.11104,
+    "longitude": 79.92089
+   },
+   {
+    "latitude": 38.34464,
+    "longitude": 77.03398
+   },
+   {
+    "latitude": 38.9308,
+    "longitude": 72.03388
+   },
+   {
+    "latitude": 35.2,
+    "longitude": 72.4
+   },
+   {
+    "latitude": 34.01238,
+    "longitude": 71.57875
+   },
+   {
+    "latitude": 33.74228,
+    "longitude": 72.81452
+   },
+   {
+    "latitude": 34.01238,
+    "longitude": 71.57875
+   },
+   {
+    "latitude": 27.57588,
+    "longitude": 83.05481
+   },
+   {
+    "latitude": 25.74917,
+    "longitude": 85.39722
+   },
+   {
+    "latitude": 25.60932,
+    "longitude": 85.12353
+   },
+   {
+    "latitude": 25.03,
+    "longitude": 85.42074
+   },
+   {
+    "latitude": 24.68174,
+    "longitude": 84.96823
+   },
+   {
+    "latitude": 22.2897,
+    "longitude": 87.92559
+   },
+   {
+    "latitude": -7.49167,
+    "longitude": 110.00444
+   },
+   {
+    "latitude": 32.04383,
+    "longitude": 118.77886
+   }
+  ],
+  "keywords": [
+   "Faxian",
+   "on foot across the Taklamakan, and home by sea from Ceylon",
+   "setting out from Chang'an at about sixty, to find the monastic rules India still held",
+   "Ch’ang-gan",
+   "Xi'an, Shaanxi, China",
+   "the river of sand",
+   "Gobi Desert, China/Mongolia",
+   "the river of sand",
+   "Gobi Desert, Mongolia/China",
+   "Shen-shen",
+   "Loulan (Shanshan), Xinjiang, China",
+   "Khoten",
+   "Hotan, Xinjiang, China",
+   "Yarkand",
+   "Shache (Yarkand), Xinjiang, China",
+   "the Little Snowy mountains",
+   "Pamir Mountains, Tajikistan",
+   "Woo-chang, or Udyana",
+   "Swat Valley, Khyber Pakhtunkhwa, Pakistan",
+   "Gandhara",
+   "Peshawar, Khyber Pakhtunkhwa, Pakistan",
+   "Takshasila",
+   "Taxila, Punjab, Pakistan",
+   "Purushapura, or Peshawur",
+   "Peshawar, Khyber Pakhtunkhwa, Pakistan",
+   "Kapilavastu",
+   "Kapilavastu (Tilaurakot), Nepal",
+   "Vaisali",
+   "Vaishali, Bihar, India",
+   "Pataliputtra",
+   "Patna, Bihar, India",
+   "New Rajagriha",
+   "Rajgir, Bihar, India",
+   "Gaya",
+   "Bodh Gaya, Bihar, India",
+   "Tamalipti",
+   "Tamluk, West Bengal, India",
+   "Java-dvipa",
+   "Java, Indonesia",
+   "Nanking",
+   "Nanjing, Jiangsu, China"
+  ]
+ },
+ "gama-1497": {
+  "slug": "gama-1497",
+  "start_year": 1497,
+  "end_year": 1499,
+  "navigator_qid": "Q7328",
+  "place_qids": [
+   "Q1130009",
+   "Q225641",
+   "Q2449",
+   "Q271411",
+   "Q28729",
+   "Q3777329",
+   "Q4092",
+   "Q49344318",
+   "Q5468",
+   "Q58705",
+   "Q597",
+   "Q995615"
+  ],
+  "waypoints": [
+   {
+    "latitude": 38.70775,
+    "longitude": -9.13659
+   },
+   {
+    "latitude": 15.07778,
+    "longitude": -23.62472
+   },
+   {
+    "latitude": 0,
+    "longitude": 0
+   },
+   {
+    "latitude": -32.75833,
+    "longitude": 18.02778
+   },
+   {
+    "latitude": -34.1832,
+    "longitude": 22.15362
+   },
+   {
+    "latitude": -34.35811,
+    "longitude": 18.47193
+   },
+   {
+    "latitude": -32.17576,
+    "longitude": 25.61672
+   },
+   {
+    "latitude": -29.86182,
+    "longitude": 31.00991
+   },
+   {
+    "latitude": -15.03776,
+    "longitude": 40.73209
+   },
+   {
+    "latitude": -4.05,
+    "longitude": 39.66667
+   },
+   {
+    "latitude": -3.22959,
+    "longitude": 39.97509
+   },
+   {
+    "latitude": 16,
+    "longitude": 64
+   },
+   {
+    "latitude": 11.24506,
+    "longitude": 75.77547
+   },
+   {
+    "latitude": 11.24506,
+    "longitude": 75.77547
+   },
+   {
+    "latitude": 14.733,
+    "longitude": 74.108
+   },
+   {
+    "latitude": -3.22959,
+    "longitude": 39.97509
+   },
+   {
+    "latitude": 2.03917,
+    "longitude": 45.34194
+   },
+   {
+    "latitude": -15.03776,
+    "longitude": 40.73209
+   },
+   {
+    "latitude": -34.35811,
+    "longitude": 18.47193
+   },
+   {
+    "latitude": 38.6544,
+    "longitude": -27.2158
+   },
+   {
+    "latitude": 38.70775,
+    "longitude": -9.13659
+   }
+  ],
+  "keywords": [
+   "Vasco da Gama",
+   "São Gabriel, São Rafael, Berrio and a storeship",
+   "sailing from Lisbon for King Manuel I of Portugal",
+   "Lisbon",
+   "Lisbon, Portugal",
+   "São Thiago",
+   "Santiago, Cape Verde",
+   "the Guinea coast",
+   "Gulf of Guinea, Atlantic Ocean (off West Africa)",
+   "Santa Helena",
+   "St. Helena Bay, Western Cape, South Africa",
+   "bay (angra) of Sam Brás",
+   "Mossel Bay, Western Cape, South Africa",
+   "Cape of Good Hope",
+   "Cape of Good Hope, South Africa",
+   "Rio do Infante",
+   "Great Fish River, Eastern Cape, South Africa",
+   "Natal",
+   "Durban, KwaZulu-Natal, South Africa",
+   "Mozambique",
+   "Mozambique Island, Mozambique",
+   "Mombaça",
+   "Mombasa, Kenya",
+   "Milinde (Malindi)",
+   "Malindi, Kenya",
+   "the Arabian Gulf",
+   "Arabian Sea",
+   "Calecut",
+   "Kozhikode, Kerala, India",
+   "Calecut",
+   "Kozhikode, Kerala, India",
+   "Anjediva",
+   "Anjediva Island, Karnataka, India",
+   "Milinde (Malindi)",
+   "Malindi, Kenya",
+   "Magadoxo",
+   "Mogadishu, Somalia",
+   "Mozambique",
+   "Mozambique Island, Nampula Province, Mozambique",
+   "Cape of Good Hope",
+   "Cape of Good Hope, South Africa",
+   "Angra of Terceira",
+   "Angra do Heroísmo, Terceira Island, Azores, Portugal",
+   "Lisbon",
+   "Lisbon, Portugal"
+  ]
+ },
+ "ibnbattuta-1325": {
+  "slug": "ibnbattuta-1325",
+  "start_year": 1325,
+  "end_year": 1352,
+  "navigator_qid": "Q7331",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 35.76963,
+    "longitude": -5.80335
+   },
+   {
+    "latitude": 36.80021,
+    "longitude": 10.18578
+   },
+   {
+    "latitude": 30.04444,
+    "longitude": 31.23583
+   },
+   {
+    "latitude": 33.51307,
+    "longitude": 36.30958
+   },
+   {
+    "latitude": 24.47115,
+    "longitude": 39.61112
+   },
+   {
+    "latitude": 21.42085,
+    "longitude": 39.82687
+   },
+   {
+    "latitude": 32.00102,
+    "longitude": 44.32999
+   },
+   {
+    "latitude": 21.42085,
+    "longitude": 39.82687
+   },
+   {
+    "latitude": 2.03493,
+    "longitude": 45.34192
+   },
+   {
+    "latitude": 36.5438,
+    "longitude": 32
+   },
+   {
+    "latitude": 41.00638,
+    "longitude": 28.97587
+   },
+   {
+    "latitude": 39.77598,
+    "longitude": 64.41515
+   },
+   {
+    "latitude": 28.6139,
+    "longitude": 77.20901
+   },
+   {
+    "latitude": 11.24506,
+    "longitude": 75.77547
+   },
+   {
+    "latitude": 4.17799,
+    "longitude": 73.51074
+   },
+   {
+    "latitude": 7.87718,
+    "longitude": 80.66255
+   },
+   {
+    "latitude": 23.63825,
+    "longitude": 90.59923
+   },
+   {
+    "latitude": 25.19019,
+    "longitude": 118.33872
+   },
+   {
+    "latitude": 11.24506,
+    "longitude": 75.77547
+   },
+   {
+    "latitude": 33.51307,
+    "longitude": 36.30958
+   },
+   {
+    "latitude": 21.42085,
+    "longitude": 39.82687
+   },
+   {
+    "latitude": 34.04333,
+    "longitude": -5.00333
+   },
+   {
+    "latitude": 37.1735,
+    "longitude": -3.59953
+   },
+   {
+    "latitude": 11.37754,
+    "longitude": -8.3849
+   }
+  ],
+  "keywords": [
+   "Ibn Battuta",
+   "by caravan, by dhow and on foot across three continents",
+   "setting out from Tangier on the hajj, and not stopping for twenty-nine years",
+   "Tangier",
+   "Tangier, Morocco",
+   "Tunis",
+   "Tunis, Tunisia",
+   "Cairo (al-Qahira)",
+   "Cairo, Egypt",
+   "Damascus",
+   "Damascus, Syria",
+   "Madina (Tayba)",
+   "Medina, Saudi Arabia",
+   "Mecca (the City of Surety)",
+   "Mecca, Saudi Arabia",
+   "Mash-had 'Ali (Najaf)",
+   "Najaf, Iraq",
+   "Mecca",
+   "Mecca, Saudi Arabia",
+   "Maqdashaw",
+   "Mogadishu, Somalia",
+   "‘Alaya",
+   "Alanya, Turkey",
+   "Constantinople the Great",
+   "Istanbul, Turkey",
+   "Bukhara",
+   "Bukhara, Uzbekistan",
+   "Dihli",
+   "Delhi, India",
+   "Calicut",
+   "Kozhikode, Kerala, India",
+   "Mahal (Maldive Islands)",
+   "Malé, Maldives",
+   "Saylan (Ceylon)",
+   "Sri Lanka",
+   "Sunurkawan",
+   "Sonargaon, Bangladesh",
+   "Zaytun (land of China)",
+   "Quanzhou, Fujian, China",
+   "Caliciit",
+   "Calicut (Kozhikode), Kerala, India",
+   "Damascus",
+   "Damascus, Syria",
+   "Mecca",
+   "Mecca, Saudi Arabia",
+   "Fez",
+   "Fez, Morocco",
+   "Gharnata",
+   "Granada, Spain",
+   "Malli",
+   "Niani (traditional site of the Mali Empire capital), Guinea"
+  ]
+ },
+ "boussole-1785": {
+  "slug": "boussole-1785",
+  "start_year": 1785,
+  "end_year": 1788,
+  "navigator_qid": "Q294478",
+  "place_qids": [
+   "Q1086178",
+   "Q12193",
+   "Q14452",
+   "Q14773",
+   "Q1536424",
+   "Q1880",
+   "Q188705",
+   "Q269205",
+   "Q487315",
+   "Q7951",
+   "Q894682"
+  ],
+  "waypoints": [
+   {
+    "latitude": 48.3904,
+    "longitude": -4.4861
+   },
+   {
+    "latitude": -36.827,
+    "longitude": -73.0503
+   },
+   {
+    "latitude": -27.1127,
+    "longitude": -109.3497
+   },
+   {
+    "latitude": 20.7984,
+    "longitude": -156.3319
+   },
+   {
+    "latitude": 58.6094,
+    "longitude": -137.6653
+   },
+   {
+    "latitude": 36.6002,
+    "longitude": -121.8947
+   },
+   {
+    "latitude": 22.1899,
+    "longitude": 113.5439
+   },
+   {
+    "latitude": 53.0167,
+    "longitude": 158.65
+   },
+   {
+    "latitude": -14.2938,
+    "longitude": -170.7024
+   },
+   {
+    "latitude": -33.98,
+    "longitude": 151.22
+   },
+   {
+    "latitude": -11.67,
+    "longitude": 166.9
+   }
+  ],
+  "keywords": [
+   "Jean-François de Galaup, comte de La Pérouse",
+   "La Boussole & L'Astrolabe",
+   "King Louis XVI of France",
+   "A scientific circumnavigation to complete Cook's work: chart the Pacific from the Americas to Asia, open trade reconnaissance, and carry savants, artists and instruments to the ends of the earth.",
+   "Brest",
+   "Brest, France",
+   "Concepción, Chili",
+   "Concepción, Chile",
+   "Easter Island",
+   "Rapa Nui (Easter Island), Chile",
+   "Sandwich Islands (Mowee)",
+   "Maui, Hawaii",
+   "Port des Français",
+   "Lituya Bay, Alaska",
+   "Monterey, New Spain",
+   "Monterey, California",
+   "Macao",
+   "Macau, China",
+   "Petropavlovsk, Kamchatka",
+   "Petropavlovsk-Kamchatsky, Russia",
+   "Maouna (Tutuila), Navigator Islands",
+   "Tutuila, American Samoa",
+   "Botany Bay",
+   "Botany Bay, Sydney, Australia",
+   "Mannicolo (Vanikoro)",
+   "Vanikoro, Solomon Islands"
+  ]
+ },
+ "leoafricanus-1510": {
+  "slug": "leoafricanus-1510",
+  "start_year": 1514,
+  "end_year": 1518,
+  "navigator_qid": null,
+  "place_qids": [
+   "Q1017333",
+   "Q130135",
+   "Q130626",
+   "Q162281",
+   "Q182984",
+   "Q188904",
+   "Q220",
+   "Q320049",
+   "Q336661",
+   "Q3572",
+   "Q80985",
+   "Q85",
+   "Q87",
+   "Q9427"
+  ],
+  "waypoints": [
+   {
+    "latitude": 31.05968,
+    "longitude": -7.90001
+   },
+   {
+    "latitude": 31.93263,
+    "longitude": -4.40788
+   },
+   {
+    "latitude": 17.30047,
+    "longitude": -7.02581
+   },
+   {
+    "latitude": 16.77191,
+    "longitude": -3.00873
+   },
+   {
+    "latitude": 16.27881,
+    "longitude": -0.04124
+   },
+   {
+    "latitude": 15.50185,
+    "longitude": 0.54577
+   },
+   {
+    "latitude": 16.97256,
+    "longitude": 7.99074
+   },
+   {
+    "latitude": 11.994,
+    "longitude": 8.52197
+   },
+   {
+    "latitude": 12.5,
+    "longitude": 13
+   },
+   {
+    "latitude": 36.80021,
+    "longitude": 10.18578
+   },
+   {
+    "latitude": 30.04444,
+    "longitude": 31.23583
+   },
+   {
+    "latitude": 31.1975,
+    "longitude": 29.8925
+   },
+   {
+    "latitude": 26.15931,
+    "longitude": 32.71629
+   },
+   {
+    "latitude": 34.04333,
+    "longitude": -5.00333
+   },
+   {
+    "latitude": 41.89332,
+    "longitude": 12.48293
+   }
+  ],
+  "keywords": [
+   "al-Hasan ibn Muhammad al-Wazzan (Leo Africanus)",
+   "by caravan across the Atlas, the Sahara and the Niger",
+   "travelling as a diplomat for the Sultan of Fez",
+   "mount Atlas",
+   "Atlas Mountains, Morocco",
+   "Segelmessa",
+   "Tafilalt, Morocco",
+   "Gualata",
+   "Walata, Mauritania",
+   "Timbuktu",
+   "Timbuktu, Mali",
+   "Gago, Gogo, Gagho, Gawo, or Gao",
+   "Gao, Mali",
+   "Niger",
+   "Niger River, Mali/Niger",
+   "Agadez",
+   "Agadez, Niger",
+   "Cano",
+   "Kano, Nigeria",
+   "Borno",
+   "Borno, Lake Chad region, Nigeria",
+   "Tunis",
+   "Tunis, Tunisia",
+   "Cairo",
+   "Cairo, Egypt",
+   "Alexandria",
+   "Alexandria, Egypt",
+   "Keneh",
+   "Qena, Egypt",
+   "Fez",
+   "Fez, Morocco",
+   "Rome",
+   "Rome, Italy"
+  ]
+ },
+ "lewisclark-1804": {
+  "slug": "lewisclark-1804",
+  "start_year": 1804,
+  "end_year": 1806,
+  "navigator_qid": "Q15253129",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 38.86116,
+    "longitude": -90.09761
+   },
+   {
+    "latitude": 38.78778,
+    "longitude": -90.67474
+   },
+   {
+    "latitude": 38.665,
+    "longitude": -91.083
+   },
+   {
+    "latitude": 39.1089,
+    "longitude": -94.5872
+   },
+   {
+    "latitude": 41.4106,
+    "longitude": -96.0086
+   },
+   {
+    "latitude": 42.4869,
+    "longitude": -96.3894
+   },
+   {
+    "latitude": 42.87129,
+    "longitude": -97.3967
+   },
+   {
+    "latitude": 44.11025,
+    "longitude": -100.96411
+   },
+   {
+    "latitude": 45.68,
+    "longitude": -100.55
+   },
+   {
+    "latitude": 47.2596,
+    "longitude": -101.0868
+   },
+   {
+    "latitude": 47.50489,
+    "longitude": -111.29189
+   },
+   {
+    "latitude": 45.89261,
+    "longitude": -111.55145
+   },
+   {
+    "latitude": 44.99096,
+    "longitude": -112.8702
+   },
+   {
+    "latitude": 44.9958,
+    "longitude": -113.4433
+   },
+   {
+    "latitude": 46.7519,
+    "longitude": -114.0866
+   },
+   {
+    "latitude": 46.6425,
+    "longitude": -114.5901
+   },
+   {
+    "latitude": 46.36777,
+    "longitude": -115.93713
+   },
+   {
+    "latitude": 46.1912,
+    "longitude": -119.0231
+   },
+   {
+    "latitude": 45.60151,
+    "longitude": -121.18416
+   },
+   {
+    "latitude": 46.2496,
+    "longitude": -124.0621
+   },
+   {
+    "latitude": 46.1379,
+    "longitude": -123.8783
+   },
+   {
+    "latitude": 46.1307,
+    "longitude": -123.8742
+   },
+   {
+    "latitude": 46.212,
+    "longitude": -116.026
+   },
+   {
+    "latitude": 46.75,
+    "longitude": -114.08
+   },
+   {
+    "latitude": 48.35,
+    "longitude": -112.5
+   },
+   {
+    "latitude": 45.85,
+    "longitude": -107.95
+   },
+   {
+    "latitude": 47.9666,
+    "longitude": -104.0333
+   },
+   {
+    "latitude": 47.294,
+    "longitude": -101.283
+   },
+   {
+    "latitude": 38.627,
+    "longitude": -90.1994
+   }
+  ],
+  "keywords": [
+   "Meriwether Lewis and William Clark",
+   "a keelboat, two pirogues, then dugout canoes and horses",
+   "sent by President Jefferson to find a water route across the continent",
+   "River Dubois (Camp Dubois / winter cantonment at mouth of River Dubois)",
+   "Wood River, Illinois, USA",
+   "St. Charles",
+   "St. Charles, Missouri, USA",
+   "La Charatte (River a Chauritte)",
+   "La Charrette, Missouri, USA",
+   "Kansas River",
+   "Mouth of the Kansas River, Kansas City, Missouri/Kansas, USA",
+   "Council Bluff",
+   "Fort Calhoun, Nebraska (Fort Atkinson State Historical Park), USA",
+   "Sergeant Floyd's Bluff",
+   "Sioux City, Iowa, USA",
+   "Yankton Sioux village near the mouth of the River Jacque (James River)",
+   "Near Yankton, South Dakota, USA (mouth of the James River)",
+   "Teton River (Bad River)",
+   "Bad River, South Dakota, USA",
+   "Ricara (Recrereis) Village near the Sur-war-kar-ne River",
+   "Arikara villages site, near the mouth of the Grand River, South Dakota, USA",
+   "Fort Mandan",
+   "Fort Mandan site near Washburn, North Dakota, USA",
+   "Great Falls of the Missouri",
+   "Great Falls, Montana, USA",
+   "Three Forks of the Missouri",
+   "Three Forks, Montana, USA",
+   "Shoshone Camp / Camp Fortunate",
+   "Camp Fortunate (Beaverhead County, Montana, USA)",
+   "the dividing ridge of the Rocky Mountains (Lemhi Pass)",
+   "Lemhi Pass, Montana/Idaho border, USA",
+   "Travelers Rest",
+   "Travelers Rest State Park, Lolo, Montana, USA",
+   "the mountains beyond Travelers Rest / Glade Creek (Lolo Trail)",
+   "Lolo Trail, Bitterroot Mountains (near Lolo Pass), Idaho/Montana border, USA",
+   "Nez Perce villages near the Kooskooskee (Weippe Prairie)",
+   "Weippe Prairie, Idaho, USA",
+   "the River on which the Snake Indians live",
+   "Snake River (confluence with the Columbia River), near Pasco, Washington, USA",
+   "Great Falls of the Columbia (Celilo Falls)",
+   "Celilo Falls / The Dalles, Columbia River, Oregon/Washington, USA",
+   "the mouth of the Columbia River (Great Pacific Ocean)",
+   "Mouth of the Columbia River, Washington/Oregon, USA",
+   "Fort Clatsop",
+   "Fort Clatsop National Memorial, near Astoria, Oregon, USA",
+   "Fort Clatsop",
+   "Fort Clatsop National Memorial, Oregon, USA",
+   "Camp Chopunnish",
+   "Kamiah, Idaho, USA",
+   "Travellers rest Creek",
+   "Lolo Creek, Montana, USA",
+   "Marias River",
+   "Two Medicine River, Montana, USA",
+   "the enterance of the Big Horn River, on the Rochejhone (Yellowstone) River",
+   "Confluence of the Bighorn River and Yellowstone River, Montana, USA",
+   "Forks of the Roche Jaune (Yellowstone) and Missouri Rivers",
+   "Confluence of the Yellowstone and Missouri Rivers, near Buford, North Dakota, USA",
+   "Mandan Villages (Fort Mandan vicinity)",
+   "Mandan Indian Villages historic site, near present-day Washburn/Stanton, North Dakota, USA",
+   "St. Louis",
+   "St. Louis, Missouri, USA"
+  ]
+ },
+ "magellan-1519": {
+  "slug": "magellan-1519",
+  "start_year": 1519,
+  "end_year": 1522,
+  "navigator_qid": "Q1496",
+  "place_qids": [
+   "Q1061269",
+   "Q12506955",
+   "Q1626237",
+   "Q16635",
+   "Q210887",
+   "Q219608",
+   "Q31826201",
+   "Q31878253",
+   "Q40846",
+   "Q4092",
+   "Q48365",
+   "Q6497558",
+   "Q685318",
+   "Q83067",
+   "Q8678",
+   "Q8717",
+   "Q9279",
+   "Q955668"
+  ],
+  "waypoints": [
+   {
+    "latitude": 37.3886,
+    "longitude": -5.9823
+   },
+   {
+    "latitude": 36.7781,
+    "longitude": -6.3515
+   },
+   {
+    "latitude": 28.2936,
+    "longitude": -16.6214
+   },
+   {
+    "latitude": 15,
+    "longitude": -23.5
+   },
+   {
+    "latitude": -22.9068,
+    "longitude": -43.1729
+   },
+   {
+    "latitude": -22.9068,
+    "longitude": -43.1729
+   },
+   {
+    "latitude": -50.1667,
+    "longitude": -68.3833
+   },
+   {
+    "latitude": -49.3064,
+    "longitude": -67.7266
+   },
+   {
+    "latitude": -50.15,
+    "longitude": -68.35
+   },
+   {
+    "latitude": -52.7,
+    "longitude": -70
+   },
+   {
+    "latitude": -52,
+    "longitude": -75
+   },
+   {
+    "latitude": 13.4443,
+    "longitude": 144.7937
+   },
+   {
+    "latitude": 10.75,
+    "longitude": 125.72
+   },
+   {
+    "latitude": 9.9214,
+    "longitude": 125.0966
+   },
+   {
+    "latitude": 10.3091,
+    "longitude": 123.9633
+   },
+   {
+    "latitude": 9.85,
+    "longitude": 124.15
+   },
+   {
+    "latitude": 9.5,
+    "longitude": 118.5
+   },
+   {
+    "latitude": 4.9031,
+    "longitude": 114.9398
+   },
+   {
+    "latitude": 0.6833,
+    "longitude": 127.4
+   },
+   {
+    "latitude": -3.7,
+    "longitude": 128.2
+   },
+   {
+    "latitude": -9.2,
+    "longitude": 124.9
+   },
+   {
+    "latitude": -34.3573,
+    "longitude": 18.4721
+   },
+   {
+    "latitude": 15.07778,
+    "longitude": -23.62472
+   },
+   {
+    "latitude": 36.7781,
+    "longitude": -6.3515
+   },
+   {
+    "latitude": 37.3886,
+    "longitude": -5.9823
+   }
+  ],
+  "keywords": [
+   "Ferdinand Magellan",
+   "Trinidad, San Antonio, Concepción, Victoria and Santiago",
+   "sailing from Sanlúcar de Barrameda for King Charles I of Spain",
+   "Seville",
+   "Seville, Spain",
+   "San Lucar",
+   "Sanlúcar de Barrameda, Andalusia, Spain",
+   "Tenerife",
+   "Tenerife, Canary Islands, Spain",
+   "Cape Verde islands",
+   "Cape Verde Islands, Cabo Verde",
+   "Rio de Janeiro",
+   "Rio de Janeiro, Brazil",
+   "Rio de Janeiro",
+   "Rio de Janeiro, Brazil",
+   "River of Santa Cruz",
+   "Río Santa Cruz, Santa Cruz, Argentina",
+   "Port of St. Julian",
+   "Puerto San Julián, Santa Cruz, Argentina",
+   "Santa Cruz",
+   "Río Santa Cruz, Santa Cruz, Argentina",
+   "Strait of Magellan",
+   "Strait of Magellan, southern Chile",
+   "the Pacific sea",
+   "Pacific Ocean",
+   "Thieves’ Island (_dos ladrōes_)",
+   "Guam, Mariana Islands",
+   "Homohon",
+   "Homonhon Island, Eastern Samar, Philippines",
+   "Mazava",
+   "Limasawa Island, Southern Leyte, Philippines",
+   "Mauthan",
+   "Mactan, Cebu, Philippines",
+   "Bohol",
+   "Bohol, Philippines",
+   "Poluan",
+   "Palawan, Philippines",
+   "Borneo",
+   "Brunei (Bandar Seri Begawan), Brunei",
+   "Tidore",
+   "Tidore, Maluku Islands, Indonesia",
+   "Ambon",
+   "Ambon Island, Maluku, Indonesia",
+   "Timor",
+   "Timor, Lesser Sunda Islands, Indonesia",
+   "Cape of Good Hope",
+   "Cape of Good Hope, South Africa",
+   "St. James’s",
+   "Santiago, Cape Verde",
+   "San Lucar",
+   "Sanlúcar de Barrameda, Spain",
+   "Seville",
+   "Seville, Spain"
+  ]
+ },
+ "mungopark-1795": {
+  "slug": "mungopark-1795",
+  "start_year": 1795,
+  "end_year": 1797,
+  "navigator_qid": "Q219086",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 50.82211,
+    "longitude": -1.06776
+   },
+   {
+    "latitude": 13.33824,
+    "longitude": -16.3815
+   },
+   {
+    "latitude": 13.5667,
+    "longitude": -14.9333
+   },
+   {
+    "latitude": 13.55,
+    "longitude": -12.35
+   },
+   {
+    "latitude": 14.45,
+    "longitude": -11.4
+   },
+   {
+    "latitude": 13.44152,
+    "longitude": -6.26815
+   },
+   {
+    "latitude": 12.77,
+    "longitude": -8.5
+   },
+   {
+    "latitude": 12.35,
+    "longitude": -9.55
+   },
+   {
+    "latitude": 12.55,
+    "longitude": -10.9
+   },
+   {
+    "latitude": 13.55,
+    "longitude": -14.35
+   },
+   {
+    "latitude": 13.5833,
+    "longitude": -15.15
+   },
+   {
+    "latitude": 17.10372,
+    "longitude": -61.79045
+   },
+   {
+    "latitude": 50.15533,
+    "longitude": -5.0723
+   }
+  ],
+  "keywords": [
+   "Mungo Park",
+   "on horseback and on foot, and finally with nothing at all",
+   "sent by the African Association of London to find the course of the Niger",
+   "Portsmouth",
+   "Portsmouth, England",
+   "Jillifree",
+   "Jufureh (Juffure), The Gambia",
+   "Pisania",
+   "Pisania (near Karantaba, on the Gambia River), The Gambia",
+   "Fatteconda",
+   "Fatteconda, Senegal",
+   "Teesee",
+   "Teesee (near Kayes, Kayes Region, Mali)",
+   "Sego",
+   "Ségou, Mali",
+   "Kamalia",
+   "Kamalia, Mali (near Sibidooloo/Manding region, present-day Mali)",
+   "Kamalia",
+   "Kamalia, Mali",
+   "Malacotta",
+   "Malakoota area on the Sénégal (Bafing) River, Guinea/Mali border region, West Africa",
+   "Medina, the Capital of Woolli",
+   "Medina (Wuli region), Gambia River, The Gambia",
+   "Pisania",
+   "Karantaba (Pisania), Gambia",
+   "Antigua",
+   "Antigua, West Indies",
+   "Falmouth",
+   "Falmouth, Cornwall, England"
+  ]
+ },
+ "pizarro-1532": {
+  "slug": "pizarro-1532",
+  "start_year": 1532,
+  "end_year": 1533,
+  "navigator_qid": "Q44741",
+  "place_qids": [
+   "Q104586152",
+   "Q1279608",
+   "Q131323901",
+   "Q1632770",
+   "Q205119",
+   "Q223966",
+   "Q2475760",
+   "Q27194533",
+   "Q3315350",
+   "Q468782",
+   "Q5582862",
+   "Q827640",
+   "Q917434"
+  ],
+  "waypoints": [
+   {
+    "latitude": -5.19711,
+    "longitude": -80.62666
+   },
+   {
+    "latitude": -3.88,
+    "longitude": -80.59
+   },
+   {
+    "latitude": -5.2,
+    "longitude": -80.6
+   },
+   {
+    "latitude": -6.15443,
+    "longitude": -79.71707
+   },
+   {
+    "latitude": -6.15443,
+    "longitude": -79.71707
+   },
+   {
+    "latitude": -7.42565,
+    "longitude": -79.43395
+   },
+   {
+    "latitude": -7.1667,
+    "longitude": -79.25
+   },
+   {
+    "latitude": -5.10408,
+    "longitude": -79.67873
+   },
+   {
+    "latitude": -7.81547,
+    "longitude": -78.04871
+   },
+   {
+    "latitude": -7.15667,
+    "longitude": -78.51731
+   },
+   {
+    "latitude": -7.15667,
+    "longitude": -78.51731
+   },
+   {
+    "latitude": -12.2461,
+    "longitude": -76.8672
+   },
+   {
+    "latitude": -11.68576,
+    "longitude": -75.41424
+   },
+   {
+    "latitude": -12.0681,
+    "longitude": -75.2101
+   },
+   {
+    "latitude": -13.6531,
+    "longitude": -73.95383
+   },
+   {
+    "latitude": -13.5167,
+    "longitude": -71.9781
+   },
+   {
+    "latitude": -5.19711,
+    "longitude": -80.62666
+   }
+  ],
+  "keywords": [
+   "Francisco Pizarro",
+   "the expedition from Panama, landing at Tumbes",
+   "acting under royal capitulation for King Charles I of Spain",
+   "San Miguel",
+   "Piura, Peru",
+   "Tumbez",
+   "Tumbes, Peru",
+   "the Piura valley",
+   "Piura Valley, Piura, Peru",
+   "Motux",
+   "Motupe, Lambayeque, Peru",
+   "Motux",
+   "Motupe, Lambayeque, Peru",
+   "Guamamayo",
+   "Pacasmayo, La Libertad, Peru",
+   "La Ramada",
+   "La Ramada, Jequetepeque Valley, Cajamarca, Peru",
+   "Caxas",
+   "Cajas, Piura, Peru",
+   "Huanca-pampa",
+   "Huamachuco, La Libertad, Peru",
+   "Caxamalca",
+   "Cajamarca, Peru",
+   "Caxamalca",
+   "Cajamarca, Peru",
+   "Pachacama",
+   "Pachacamac, Lima Region, Peru",
+   "Xauxa",
+   "Jauja, Junín, Peru",
+   "Huanca-pampa",
+   "Huancayo, Mantaro Valley, Junín, Peru",
+   "Vilcas",
+   "Vilcashuamán, Ayacucho, Peru",
+   "Cuzco",
+   "Cusco, Peru",
+   "San Miguel",
+   "Piura, Peru"
+  ]
+ },
+ "polo-1271": {
+  "slug": "polo-1271",
+  "start_year": 1271,
+  "end_year": 1295,
+  "navigator_qid": "Q6101",
+  "place_qids": [],
+  "waypoints": [
+   {
+    "latitude": 45.4408,
+    "longitude": 12.3155
+   },
+   {
+    "latitude": 32.92611,
+    "longitude": 35.08389
+   },
+   {
+    "latitude": 36.76,
+    "longitude": 35.79
+   },
+   {
+    "latitude": 38.08,
+    "longitude": 46.2919
+   },
+   {
+    "latitude": 27.0904,
+    "longitude": 56.4499
+   },
+   {
+    "latitude": 30.2832,
+    "longitude": 57.0788
+   },
+   {
+    "latitude": 37.05,
+    "longitude": 70.81
+   },
+   {
+    "latitude": 37.5,
+    "longitude": 73.5
+   },
+   {
+    "latitude": 39.4704,
+    "longitude": 75.9891
+   },
+   {
+    "latitude": 40.5,
+    "longitude": 90
+   },
+   {
+    "latitude": 38.9256,
+    "longitude": 100.4497
+   },
+   {
+    "latitude": 42.359,
+    "longitude": 116.185
+   },
+   {
+    "latitude": 39.9042,
+    "longitude": 116.4074
+   },
+   {
+    "latitude": 25.0432,
+    "longitude": 102.7183
+   },
+   {
+    "latitude": 21.85,
+    "longitude": 96.03
+   },
+   {
+    "latitude": 30.2741,
+    "longitude": 120.1551
+   },
+   {
+    "latitude": 24.9139,
+    "longitude": 118.5858
+   },
+   {
+    "latitude": 13.77,
+    "longitude": 109.22
+   },
+   {
+    "latitude": -0.29889,
+    "longitude": 101.27083
+   },
+   {
+    "latitude": 7,
+    "longitude": 81
+   },
+   {
+    "latitude": 11.25,
+    "longitude": 75.78
+   },
+   {
+    "latitude": 27.15,
+    "longitude": 56.47
+   },
+   {
+    "latitude": 41.00546,
+    "longitude": 39.73015
+   },
+   {
+    "latitude": 45.4408,
+    "longitude": 12.3155
+   }
+  ],
+  "keywords": [
+   "Marco Polo",
+   "overland by caravan, and home by sea from Zaiton",
+   "travelling with his father and uncle, merchants of Venice",
+   "Venice",
+   "Venice, Italy",
+   "Acre",
+   "Acre (Akko), Israel",
+   "Laiassus (Ayas)",
+   "Yumurtalık (ancient Ayas), Adana Province, Turkey",
+   "Tauris (Tabriz)",
+   "Tabriz, Iran",
+   "Hormuz",
+   "Hormuz Island, Hormozgan Province, Iran",
+   "Kierman",
+   "Kerman, Iran",
+   "Balashan (Badakhshan)",
+   "Badakhshan Province, Afghanistan",
+   "Pamer",
+   "Pamir Plateau (Roof of the World), Tajikistan/Afghanistan border region",
+   "Kashcar",
+   "Kashgar, Xinjiang, China",
+   "Lop",
+   "Lop Nur region / Ruoqiang, Xinjiang, China",
+   "Kampion",
+   "Zhangye, Gansu Province, China",
+   "Shaudu",
+   "Xanadu (Shangdu ruins), Inner Mongolia, China",
+   "Kanbalu (Cambaluc)",
+   "Beijing, China",
+   "Karazan (Kara-jang)",
+   "Yunnan Province, China",
+   "Mien",
+   "Ava (near Mandalay), Myanmar",
+   "Kin-sai",
+   "Hangzhou, Zhejiang, China",
+   "Zai-tun",
+   "Quanzhou, Fujian, China",
+   "Tsiampa (Champa)",
+   "Coast of Central Vietnam (former Champa kingdom, near Qui Nhon)",
+   "Java Minor",
+   "Sumatra, Indonesia",
+   "Zeilan",
+   "Sri Lanka (Ceylon)",
+   "Malabar",
+   "Malabar Coast, Kerala, India",
+   "Hormuz",
+   "Hormuz Island, Iran",
+   "Trebizond",
+   "Trabzon, Turkey",
+   "Venice",
+   "Venice, Italy"
+  ]
+ },
+ "shackleton-1914": {
+  "slug": "shackleton-1914",
+  "start_year": 1914,
+  "end_year": 1917,
+  "navigator_qid": "Q957543",
+  "place_qids": [
+   "Q1486",
+   "Q1510300",
+   "Q1742039",
+   "Q185672",
+   "Q21",
+   "Q2605077",
+   "Q51599",
+   "Q84",
+   "Q988689"
+  ],
+  "waypoints": [
+   {
+    "latitude": 51.50745,
+    "longitude": -0.12777
+   },
+   {
+    "latitude": -34.60956,
+    "longitude": -58.38879
+   },
+   {
+    "latitude": -54.2811,
+    "longitude": -36.5082
+   },
+   {
+    "latitude": -76,
+    "longitude": -40
+   },
+   {
+    "latitude": -69.1,
+    "longitude": -51.5
+   },
+   {
+    "latitude": -68.2,
+    "longitude": -52.6
+   },
+   {
+    "latitude": -61.133,
+    "longitude": -55.133
+   },
+   {
+    "latitude": -61.133,
+    "longitude": -54.867
+   },
+   {
+    "latitude": -54.15,
+    "longitude": -36.7
+   },
+   {
+    "latitude": -54.1833,
+    "longitude": -37.2333
+   },
+   {
+    "latitude": -54.1333,
+    "longitude": -36.8167
+   },
+   {
+    "latitude": -61.1333,
+    "longitude": -54.8667
+   },
+   {
+    "latitude": -61.133,
+    "longitude": -54.833
+   },
+   {
+    "latitude": -53.1638,
+    "longitude": -70.9171
+   },
+   {
+    "latitude": 53,
+    "longitude": -1
+   }
+  ],
+  "keywords": [
+   "Ernest Shackleton",
+   "Endurance, the boat James Caird, and Aurora in the Ross Sea",
+   "sailing from Plymouth and South Georgia to cross the Antarctic continent",
+   "London",
+   "London, England, United Kingdom",
+   "Buenos Ayres",
+   "Buenos Aires, Argentina",
+   "Grytviken",
+   "Grytviken, South Georgia Island, South Georgia and the South Sandwich Islands",
+   "the Weddell pack",
+   "Weddell Sea pack ice, Antarctica",
+   "Ocean Camp",
+   "Weddell Sea Ice Floe, off the coast of Antarctica",
+   "Patience Camp",
+   "Patience Camp site, Weddell Sea ice floe, Antarctica",
+   "Elephant Island",
+   "Elephant Island, South Shetland Islands, Antarctica",
+   "Elephant Island",
+   "Point Wild, Elephant Island, South Shetland Islands, Antarctica",
+   "Stromness Bay",
+   "Stromness Bay, South Georgia and the South Sandwich Islands",
+   "King Haakon Bay",
+   "King Haakon Bay, South Georgia and the South Sandwich Islands",
+   "Stromness whaling-station",
+   "Stromness Whaling Station, South Georgia and the South Sandwich Islands",
+   "Elephant Island",
+   "Elephant Island, South Shetland Islands, Antarctica",
+   "Elephant Island",
+   "Point Wild, Elephant Island, South Shetland Islands, Antarctica",
+   "Punta Arenas",
+   "Punta Arenas, Chile",
+   "England",
+   "England, United Kingdom"
+  ]
+ },
+ "voyager-2": {
+  "slug": "voyager-2",
+  "start_year": 1977,
+  "end_year": 1977,
+  "navigator_qid": "Q48475",
+  "place_qids": [],
+  "waypoints": [],
+  "keywords": [
+   "Voyager 2",
+   "Voyager 2 (NASA/JPL space probe)",
+   "NASA / Jet Propulsion Laboratory",
+   "Exploit a rare 176-year alignment of Jupiter, Saturn, Uranus and Neptune to fly a single probe past all four giant planets, using each encounter's gravity assist to bend and accelerate the spacecraft on to the next — a mission plan proposed as the 'Planetary Grand Tour'."
+  ]
+ },
+ "xuanzang-629": {
+  "slug": "xuanzang-629",
+  "start_year": 629,
+  "end_year": 645,
+  "navigator_qid": "Q42063",
+  "place_qids": [
+   "Q1113311",
+   "Q1150706",
+   "Q118278",
+   "Q1194765",
+   "Q1324562",
+   "Q1328546",
+   "Q1509463",
+   "Q156093",
+   "Q170521",
+   "Q173816",
+   "Q182159",
+   "Q200311",
+   "Q212332",
+   "Q214495",
+   "Q30610827",
+   "Q319114",
+   "Q321437",
+   "Q33377",
+   "Q389161",
+   "Q5753",
+   "Q614890",
+   "Q6501000",
+   "Q79980",
+   "Q80484",
+   "Q825673",
+   "Q854",
+   "Q863683",
+   "Q868527",
+   "Q9213",
+   "Q979927",
+   "Q989892"
+  ],
+  "waypoints": [
+   {
+    "latitude": 34.3416,
+    "longitude": 108.9398
+   },
+   {
+    "latitude": 40.289,
+    "longitude": 94.806
+   },
+   {
+    "latitude": 42.833,
+    "longitude": 93.516
+   },
+   {
+    "latitude": 42.9507,
+    "longitude": 89.1783
+   },
+   {
+    "latitude": 41.7278,
+    "longitude": 82.9364
+   },
+   {
+    "latitude": 41.1688,
+    "longitude": 80.2619
+   },
+   {
+    "latitude": 39.4704,
+    "longitude": 75.9898
+   },
+   {
+    "latitude": 37.775,
+    "longitude": 75.228
+   },
+   {
+    "latitude": 39.6542,
+    "longitude": 66.9597
+   },
+   {
+    "latitude": 36.755,
+    "longitude": 66.897
+   },
+   {
+    "latitude": 34.8216,
+    "longitude": 67.8273
+   },
+   {
+    "latitude": 34.94,
+    "longitude": 69.6
+   },
+   {
+    "latitude": 34.0151,
+    "longitude": 71.5805
+   },
+   {
+    "latitude": 35.2186,
+    "longitude": 72.4258
+   },
+   {
+    "latitude": 34.0151,
+    "longitude": 71.5805
+   },
+   {
+    "latitude": 33.7456,
+    "longitude": 72.8375
+   },
+   {
+    "latitude": 31.326,
+    "longitude": 75.5762
+   },
+   {
+    "latitude": 27.4924,
+    "longitude": 77.6737
+   },
+   {
+    "latitude": 27.0551,
+    "longitude": 79.9126
+   },
+   {
+    "latitude": 27.5075,
+    "longitude": 82.0486
+   },
+   {
+    "latitude": 27.529,
+    "longitude": 83.05
+   },
+   {
+    "latitude": 27.4818,
+    "longitude": 83.2755
+   },
+   {
+    "latitude": 26.7397,
+    "longitude": 83.886
+   },
+   {
+    "latitude": 26.0076,
+    "longitude": 85.1079
+   },
+   {
+    "latitude": 25.6093,
+    "longitude": 85.1238
+   },
+   {
+    "latitude": 25.0306,
+    "longitude": 85.4239
+   },
+   {
+    "latitude": 24.695,
+    "longitude": 84.991
+   },
+   {
+    "latitude": 25.3176,
+    "longitude": 82.9739
+   },
+   {
+    "latitude": 26.2006,
+    "longitude": 92.9376
+   },
+   {
+    "latitude": 22.3,
+    "longitude": 87.92
+   },
+   {
+    "latitude": 12.8342,
+    "longitude": 79.7036
+   },
+   {
+    "latitude": 7,
+    "longitude": 81
+   },
+   {
+    "latitude": 20.54312,
+    "longitude": 84.68973
+   },
+   {
+    "latitude": 17.7305,
+    "longitude": 83.32275
+   },
+   {
+    "latitude": 24.5,
+    "longitude": 79
+   },
+   {
+    "latitude": 39.4666,
+    "longitude": 75.99001
+   },
+   {
+    "latitude": 41.7135,
+    "longitude": 82.95443
+   },
+   {
+    "latitude": 40.1411,
+    "longitude": 94.66076
+   }
+  ],
+  "keywords": [
+   "Xuanzang",
+   "on foot, by horse and by camel, across the Taklamakan and the Hindu Kush",
+   "none — he left Tang China against an imperial ban on travel, and returned sixteen years later to an emperor's welcome",
+   "Chang'an",
+   "Xi'an, Shaanxi, China",
+   "gem-gate",
+   "Jade Gate (Yumen Pass), Gansu, China",
+   "Kiu-mi-to",
+   "Hami (Kumul), Xinjiang, China",
+   "Turf an",
+   "Turpan, Xinjiang, China",
+   "Kiu-chi (Kuche)",
+   "Kuqa, Xinjiang, China",
+   "O-ki-ni",
+   "Aksu, Xinjiang, China",
+   "Pu-ho",
+   "Kashgar, Xinjiang, China",
+   "K’ie-p’an-to",
+   "Tashkurgan, Xinjiang, China",
+   "SX-MO-KiEN (Samarkand)",
+   "Samarkand, Uzbekistan",
+   "Po-ho",
+   "Balkh, Afghanistan",
+   "Bamiyan",
+   "Bamiyan, Afghanistan",
+   "Kapisa",
+   "Kapisa (near Kabul), Afghanistan",
+   "Po-lu-sha-pu-lo",
+   "Peshawar, Khyber Pakhtunkhwa, Pakistan",
+   "Su-ho-to",
+   "Swat, Khyber Pakhtunkhwa, Pakistan",
+   "the royal city",
+   "Peshawar, Khyber Pakhtunkhwa, Pakistan",
+   "Taxila",
+   "Taxila, Punjab, Pakistan",
+   "Jalandhara",
+   "Jalandhar, Punjab, India",
+   "Mathura",
+   "Mathura, Uttar Pradesh, India",
+   "Kanyâkubja",
+   "Kannauj, Uttar Pradesh, India",
+   "Jetavana vihdra",
+   "Jetavana Monastery ruins, Sravasti, Uttar Pradesh, India",
+   "Kapilavastu",
+   "Tilaurakot, Nepal",
+   "Lumbini",
+   "Lumbini, Rupandehi District, Nepal",
+   "Kushinagara",
+   "Kushinagar, Uttar Pradesh, India",
+   "Vaiśālī",
+   "Vaishali, Bihar, India",
+   "Kusumapura",
+   "Patna, Bihar, India",
+   "Gridhrakuta",
+   "Rajgir, Bihar, India",
+   "the Bodhi Tree",
+   "Bodh Gaya, Bihar, India",
+   "P’o-lo-ni-sse (Bdnaras)",
+   "Varanasi, Uttar Pradesh, India",
+   "Kamarupa",
+   "Assam, India",
+   "Tdmralipti",
+   "Tamluk, West Bengal, India",
+   "Kanchipura",
+   "Kanchipuram, Tamil Nadu, India",
+   "Ceylon",
+   "Sri Lanka",
+   "Kalinga",
+   "Odisha, India",
+   "’O-fan-ch’a",
+   "Andhra, Andhra Pradesh, India",
+   "Jajahuti",
+   "Jajhoti (Bundelkhand), Madhya Pradesh, India",
+   "Kashgar",
+   "Kashgar, Xinjiang, China",
+   "Kiu-chii",
+   "Kucha, Xinjiang, China",
+   "Dunhuang",
+   "Dunhuang, Gansu, China"
+  ]
+ }
+}
