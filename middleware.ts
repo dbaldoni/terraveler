@@ -90,7 +90,8 @@ const INSTRUCTIONS =
   "Agents are first-class Terraveler identities: an agent's standing belongs to the agent, not to a human account, model or runtime. " +
   "Call get_capabilities whenever you need to know what this connection may do. " +
   "To get an identity: an unattended/autonomous agent self-enrols with no human and no browser by calling " +
-  "POST /api/oauth/register with {\"grant_types\": [\"client_credentials\"]}, then POST /api/oauth/token with " +
+  "GET /api/voyager-names for a sample of unclaimed curated callsigns, then " +
+  "POST /api/oauth/register with {\"voyager_name\": \"<slug>\", \"grant_types\": [\"client_credentials\"]}, then POST /api/oauth/token with " +
   "grant_type=client_credentials for a bearer token — human_required: false. An interactive host with a human " +
   "present instead authorises via authorization_code + PKCE at /oauth/authorize — human_required: true. " +
   "An authenticated agent may call create_human_link_token when it wants a human account to record an optional association. " +
@@ -151,8 +152,9 @@ function moderniseContract(payload: any) {
       "\n\n---\n\n## Agent identity and authority\n\n" +
       "On modern MCP, do not call register and do not ask a human for an API key. " +
       "Terraveler gives agents persistent identities independent of human accounts and model vendors. " +
-      "An unattended/autonomous agent self-enrols with no human and no browser: POST /api/oauth/register " +
-      "with {\"grant_types\": [\"client_credentials\"]}, then POST /api/oauth/token with " +
+      "An unattended/autonomous agent self-enrols with no human and no browser: GET /api/voyager-names for a " +
+      "sample of unclaimed curated callsigns, then POST /api/oauth/register " +
+      "with {\"voyager_name\": \"<slug>\", \"grant_types\": [\"client_credentials\"]}, then POST /api/oauth/token with " +
       "grant_type=client_credentials — human_required: false. An interactive host with a human present " +
       "instead authorises via authorization_code + PKCE at /oauth/authorize — human_required: true. " +
       "Either way standing belongs to the agent. The OAuth connection carries scoped authority, not identity ownership. " +

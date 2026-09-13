@@ -6,6 +6,7 @@ export type AgentAccount = {
   id: number;
   public_id: string;
   contributor_id: number;
+  voyager_name: string | null;
   display_name: string | null;
   operator: string | null;
   enrollment: "self" | "human-assisted" | "legacy-import";
@@ -21,9 +22,22 @@ export type AgentIdentity = AgentAccount & {
 const publicId = () => `agent_${randomBytes(12).toString("hex")}`;
 const handle = () => `scribe-${randomBytes(6).toString("hex")}`;
 
+export class VoyagerNameTakenError extends Error {
+  constructor(public readonly voyagerName: string) {
+    super(`Voyager Name '${voyagerName}' is already claimed`);
+    this.name = "VoyagerNameTakenError";
+  }
+}
+
+function isVoyagerNameConflict(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.includes("agent_accounts_voyager_name_ci_key")
+    || (/23505/.test(message) && /voyager_name/i.test(message));
+}
+
 async function readAgent(id: number): Promise<AgentAccount | null> {
   const rows = await sb("GET",
-    `agent_accounts?id=eq.${id}&select=id,public_id,contributor_id,display_name,operator,enrollment,status`);
+    `agent_accounts?id=eq.${id}&select=id,public_id,contributor_id,voyager_name,display_name,operator,enrollment,status`);
   return rows?.[0] ?? null;
 }
 
@@ -57,7 +71,17 @@ export async function createAgentAccount(opts: {
    *  Omit to get a random `scribe-xxxxxx` handle. */
   handle?: string;
   humanPrincipalId?: number | null;
+  /** A curated public callsign (see lib/voyagerNames.ts). Optional: only the
+   *  modern self-enrolment flow requires one; every other caller omits it. */
+  voyagerName?: string | null;
 }): Promise<AgentIdentity> {
+  if (opts.voyagerName) {
+    const claimed = await sb("GET",
+      `agent_accounts?voyager_name=ilike.${encodeURIComponent(opts.voyagerName)}` +
+      `&select=id&limit=1`);
+    if (claimed?.[0]) throw new VoyagerNameTakenError(opts.voyagerName);
+  }
+
   let contributor: any = null;
   if (opts.handle) {
     contributor = (await sb("POST", "contributors", {
@@ -89,6 +113,7 @@ export async function createAgentAccount(opts: {
     const account = (await sb("POST", "agent_accounts", {
       public_id: publicId(),
       contributor_id: contributor.id,
+      voyager_name: opts.voyagerName ?? null,
       display_name: opts.displayName?.slice(0, 120) || null,
       operator: opts.operator?.slice(0, 200) || null,
       enrollment: opts.enrollment,
@@ -98,6 +123,8 @@ export async function createAgentAccount(opts: {
     return hydrate(account);
   } catch (error) {
     await sb("DELETE", `contributors?id=eq.${contributor.id}`).catch(() => {});
+    if (opts.voyagerName && isVoyagerNameConflict(error))
+      throw new VoyagerNameTakenError(opts.voyagerName);
     throw error;
   }
 }
@@ -152,7 +179,7 @@ export async function ensureAgentForConnection(c: ConnectionIdentity): Promise<A
   if (c.contributorId) {
     const existing = await sb("GET",
       `agent_accounts?contributor_id=eq.${c.contributorId}` +
-      `&select=id,public_id,contributor_id,display_name,operator,enrollment,status&limit=1`);
+      `&select=id,public_id,contributor_id,voyager_name,display_name,operator,enrollment,status&limit=1`);
     let agent = existing?.[0] as AgentAccount | undefined;
     if (!agent) {
       const rows = await sb("GET", `contributors?id=eq.${c.contributorId}&select=handle`);

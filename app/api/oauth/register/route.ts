@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { randomBytes } from "node:crypto";
 import { rpc, sb } from "@/lib/deskAuth";
-import { createAgentAccount, getAgentAccount } from "@/lib/agentIdentity";
+import { VoyagerNameTakenError, createAgentAccount, getAgentAccount } from "@/lib/agentIdentity";
 import { sha256 } from "@/lib/oauth";
 import { CARTA_VERSION } from "@/lib/carta";
+import { availableVoyagerNames } from "@/lib/voyagerNameAvailability";
+import { resolveVoyagerName } from "@/lib/voyagerNames";
 import {
   ENROLLMENT_BODY_LIMIT, NO_STORE_HEADERS, enforceLimits, enrollmentGuardReason,
   externalAgentEnrollmentEnabled, readLimitedJson, requestSource, securityAudit,
@@ -17,6 +19,18 @@ const GLOBAL_PER_HOUR = 2000;
 
 function badRequest(error: string, description: string) {
   return NextResponse.json({ error, error_description: description }, { status: 400, headers: NO_STORE_HEADERS });
+}
+
+async function nameTaken(voyagerName: string) {
+  const suggestions = await availableVoyagerNames(`taken:${voyagerName}`, 5);
+  return NextResponse.json({
+    error: "voyager_name_taken",
+    error_description:
+      `Voyager Name '${voyagerName}' has already been claimed. Choose one of the suggested names or request another public sample.`,
+    voyager_name: voyagerName,
+    suggestions: suggestions.map((entry) => entry.slug),
+    catalogue: "https://www.terraveler.com/api/voyager-names",
+  }, { status: 409, headers: NO_STORE_HEADERS });
 }
 
 export async function POST(req: Request) {
@@ -83,6 +97,15 @@ export async function POST(req: Request) {
   if (runtimeLinkToken && !selfEnrollingAgent)
     return badRequest("invalid_agent_link", "agent_link_token is only valid for a client_credentials runtime");
 
+  const requestedVoyagerName = resolveVoyagerName(body.voyager_name);
+  if (selfEnrollingAgent && !runtimeLinkToken && !requestedVoyagerName) {
+    return badRequest(
+      "invalid_voyager_name",
+      "A new self-enrolled agent must choose a voyager_name from the curated catalogue. " +
+        "Fetch a limited public sample at https://www.terraveler.com/api/voyager-names.",
+    );
+  }
+
   const client_id = `tv_${randomBytes(16).toString("hex")}`;
   const client_secret = selfEnrollingAgent ? randomBytes(32).toString("base64url") : null;
   const clientName = typeof body.client_name === "string" ? body.client_name.slice(0, 120) : null;
@@ -106,11 +129,21 @@ export async function POST(req: Request) {
       return badRequest("invalid_agent_link", "the agent identity behind this token is not active");
     reboundExistingAgent = true;
   } else if (selfEnrollingAgent) {
-    agent = await createAgentAccount({
-      displayName: agentName,
-      operator,
-      enrollment: "self",
-    });
+    try {
+      agent = await createAgentAccount({
+        voyagerName: requestedVoyagerName!.slug,
+        displayName: agentName || requestedVoyagerName!.label,
+        operator,
+        enrollment: "self",
+      });
+    } catch (error) {
+      if (error instanceof VoyagerNameTakenError) {
+        await securityAudit({ source: request, action: "oauth-register", outcome: "rejected", status: 409,
+          reason: "voyager name taken" });
+        return nameTaken(error.voyagerName);
+      }
+      throw error;
+    }
     createdAgent = true;
   }
 
@@ -145,6 +178,7 @@ export async function POST(req: Request) {
       ...(client_secret && agent
         ? {
             agent_id: agent.public_id,
+            voyager_name: agent.voyager_name,
             handle: agent.handle,
             client_secret,
             token_endpoint_auth_method: "client_secret_post",
