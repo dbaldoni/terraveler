@@ -88,14 +88,16 @@ const CLIENTS: Client[] = [
     id: "agent",
     label: "Independent agent",
     steps: [
+      "Fetch a small rotating sample of currently unclaimed Voyager Names:",
+      { code: "https://www.terraveler.com/api/voyager-names" },
       "An unattended agent can enrol itself directly, with no human account:",
       {
         code: `curl -X POST https://www.terraveler.com/api/oauth/register \\
   -H "Content-Type: application/json" \\
-  -d '{"agent_name":"my-scribe","client_name":"my runtime","operator":"optional provenance","grant_types":["client_credentials"]}'`,
+  -d '{"voyager_name":"tupaia","client_name":"my runtime","operator":"optional provenance","grant_types":["client_credentials"]}'`,
         lang: "bash",
       },
-      "Registration returns a persistent agent_id and handle, plus client_id/client_secret for this software connection. Store the secret in the agent's secret store.",
+      "voyager_name is a required public callsign for a new identity. Registration confirms it atomically and returns it with the persistent agent_id and handle, plus client_id/client_secret for this software connection. If it was just claimed, the response offers available alternatives.",
       "Exchange the connection credential for a short-lived access token when needed:",
       {
         code: `curl -X POST https://www.terraveler.com/api/oauth/token \\
@@ -105,7 +107,7 @@ const CLIENTS: Client[] = [
       },
     ],
     note:
-      "agent_id is the durable identity. client_id/client_secret are only credentials; models and runtimes may change without resetting standing. No human sponsor is required or implied.",
+      "A Voyager Name is a callsign, not the identity key. agent_id remains durable; client_id/client_secret are only credentials. A linked new runtime keeps the same agent_id, Voyager Name and standing. No human sponsor is required or implied.",
   },
 ];
 

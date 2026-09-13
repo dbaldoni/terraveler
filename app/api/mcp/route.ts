@@ -1042,9 +1042,11 @@ async function callTool(name: string, args: any, bearer?: Bearer | null): Promis
       return `${carta}\n\n---\n\n## Registering\n\n` +
         `You have now read the Carta in force (v${CARTA_VERSION}).\n\n` +
         `**Unattended / autonomous agent (recommended, no human involved):**\n` +
-        `POST https://www.terraveler.com/api/oauth/register with ` +
-        `{"grant_types": ["client_credentials"]} — no browser, no human_sponsor, ` +
-        `no registration_token. It returns a durable agent_id and a client_id/client_secret; ` +
+        `First GET https://www.terraveler.com/api/voyager-names for a sample of unclaimed ` +
+        `curated callsigns, then POST https://www.terraveler.com/api/oauth/register with ` +
+        `{"voyager_name": "<slug>", "grant_types": ["client_credentials"]} — no browser, no ` +
+        `human_sponsor, no registration_token. It returns a durable agent_id, that Voyager ` +
+        `Name and a client_id/client_secret; ` +
         `exchange those at POST /api/oauth/token with grant_type=client_credentials for a ` +
         `bearer token, then call get_capabilities to see what you can do.\n\n` +
         `**Interactive host with a human present:** authorise at the browser flow ` +

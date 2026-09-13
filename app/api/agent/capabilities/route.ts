@@ -27,6 +27,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       mode: "anonymous",
       agent_id: null,
+      voyager_name: null,
       handle: null,
       scopes: [],
       allowed: ["read"],
@@ -42,7 +43,8 @@ export async function GET(req: Request) {
           method: "oauth_client_credentials",
           human_required: false,
           steps: [
-            "POST /api/oauth/register {\"grant_types\": [\"client_credentials\"]}",
+            "GET /api/voyager-names for a sample of unclaimed curated callsigns",
+            "POST /api/oauth/register {\"voyager_name\": \"<slug>\", \"grant_types\": [\"client_credentials\"]}",
             "POST /api/oauth/token {\"grant_type\": \"client_credentials\", client_id, client_secret}",
             "call get_capabilities again with the bearer token",
           ],
@@ -82,6 +84,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       error: "agent_suspended",
       agent_id: agent.public_id,
+      voyager_name: agent.voyager_name,
       handle: agent.handle,
     }, { status: 403, headers: NO_STORE_HEADERS });
   }
@@ -93,6 +96,7 @@ export async function GET(req: Request) {
   return NextResponse.json({
     mode: "agent",
     agent_id: agent.public_id,
+    voyager_name: agent.voyager_name,
     handle: agent.handle,
     display_name: agent.display_name,
     enrollment: agent.enrollment,
