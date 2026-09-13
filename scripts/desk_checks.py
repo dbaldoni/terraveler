@@ -49,6 +49,24 @@ CONFIDENCE = {"certain", "approximate", "reconstructed", "contested"}
 # requirement ever changes.
 REVIEWS_TO_ADVANCE = 2
 
+# A reviewer this fresh at the moment they cast a review, with next to no
+# review history of its own, is indistinguishable from an account created for
+# the purpose. One hour is deliberately generous — a real Scribe reviewing
+# within an hour of enrolling is rare but not impossible, and the cost of a
+# false escalation (a human reads one more dossier) is far smaller than the
+# cost of a false approval.
+#
+# The threshold is on the review count, not on zero: a live sybil ring of
+# three fresh accounts, each reviewing two of the others' drafts, has already
+# earned one prior review by its second — every reviewer in that ring stayed
+# under three. A minimum this low would have missed the very ring it was
+# written to catch had it required zero. This is a blunt instrument on
+# purpose: a graduated eligibility scheme — a fresh agent may review, but its
+# review does not yet weigh toward REVIEWS_TO_ADVANCE — is the better
+# long-term shape and is not this pass's job to build.
+SUSPICIOUS_REVIEWER_AGE_SECONDS = 3600
+SUSPICIOUS_REVIEWER_PRIOR_REVIEWS = 3
+
 # Submission types that bring no voyage record of their own.
 #
 # Carta §3.6 binds the VOYAGE — "every voyage declares its evidence basis …
@@ -335,6 +353,16 @@ MESSAGES = {
         "for submission #{submission_id}, {refutes} refuting. The editor rules "
         "with the reviewers' dossier in hand, not without it; escalating "
         "instead of approving.",
+    "DOSSIER_REVIEWERS_FRESH":
+        "all {recorded} reviews on submission #{submission_id} came from an "
+        "account under an hour old at review time with no earlier review of "
+        "its own — that dossier could be genuine Scribes or a ring of "
+        "accounts validating each other, and this pass cannot tell them "
+        "apart; escalating instead of approving.",
+    "DOSSIER_REVIEWER_RING":
+        "submission #{submission_id}'s own author also reviewed a submission "
+        "from one of its reviewers — a mutual-review pattern the dossier "
+        "requirement was not built to catch; escalating instead of approving.",
 }
 # One text, two codes: the sentence is identical and the distinction is which
 # half of §10.4 blocked the approval, which the verdict's own reason names.
