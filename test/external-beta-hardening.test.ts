@@ -102,6 +102,16 @@ test("token issuance for an already-registered client is not gated by enrollment
     "enrollment gate must be scoped to completing a missing agent identity, not the whole grant");
 });
 
+test("client_secret rotation requires the caller's own bearer and is not behind either gate", async () => {
+  const rotate = await read("../app/api/oauth/rotate-secret/route.ts");
+  assert.match(rotate, /verifyBearer\(req\)/, "rotation must be authorised by the caller's own live token, not by a client_id/secret pair");
+  assert.equal(rotate.includes("externalAgentEnrollmentEnabled"), false,
+    "rotating an already-issued credential is not enrollment — closing enrollment must not strand a leaked-secret agent");
+  assert.equal(rotate.includes("contentMutationsEnabled"), false,
+    "rotation touches no atlas content");
+  assert.match(rotate, /client_secret_hash/, "must reject a client with no secret to rotate (interactive/PKCE clients)");
+});
+
 test("enrollment endpoints do not import the content-mutation gate, and vice versa", async () => {
   const register = await read("../app/api/oauth/register/route.ts");
   const linkToken = await read("../app/api/agent/link-token/route.ts");
