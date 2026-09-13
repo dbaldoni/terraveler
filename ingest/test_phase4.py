@@ -215,6 +215,13 @@ class Phase4AuthorityCutoverTests(unittest.TestCase):
                 "MATCH"
             ),
             (
+                "N. redirect outside trusted boundary", 
+                "https://gutenberg.org/redirect-outside",
+                None,
+                {"matched": True, "decision": "deny", "trust_mode": None, "endpoint_id": 1, "rights_class": "public_domain", "verification_strategy": "none"},
+                "INTENTIONAL_REGISTRY_IMPROVEMENT"
+            ),
+            (
                 "O. quarantined source", 
                 "https://gutenberg.org/ebooks/quarantined",
                 None,
@@ -255,6 +262,13 @@ class Phase4AuthorityCutoverTests(unittest.TestCase):
                 lambda api: {"metadata": {"date": "1800", "access-restricted-item": "true"}},
                 {"matched": True, "decision": "requires_item_verification", "rights_class": "mixed", "trust_mode": "item_verified", "endpoint_id": 5, "verification_strategy": "archive_org_metadata"},
                 "MATCH"
+            ),
+            (
+                "Unexpected matched registry deny with unknown/unexpected reason",
+                "https://gutenberg.org/ebooks/unexpected",
+                None,
+                {"matched": True, "decision": "deny", "trust_mode": "some_unexpected_trust_mode_meaning_bug", "endpoint_id": 1, "rights_class": "public_domain", "verification_strategy": "none"},
+                "BUG"
             ),
             (
                 "Unexpected Registry Disappearance (Conservative Fail Closed)", 

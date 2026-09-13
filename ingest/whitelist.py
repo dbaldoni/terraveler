@@ -330,8 +330,13 @@ def resolve_source_authority(url: str, fetch_json=None) -> dict:
                 # Missing registry record on a historically allowed URL
                 diff_class = "CONSERVATIVE_FAIL_CLOSED"
             else:
-                # Legacy allowed but registry denied (narrowing/safety)
-                diff_class = "INTENTIONAL_REGISTRY_IMPROVEMENT"
+                # Legacy allowed but registry denied
+                # Check for explicit governance reasons
+                trust_mode = reg.get("trust_mode")
+                if trust_mode in (None, "rejected", "quarantined", "needs_human_review", "link_only", "collection_trusted", "item_verified"):
+                    diff_class = "INTENTIONAL_REGISTRY_IMPROVEMENT"
+                else:
+                    diff_class = "BUG"
         elif not legacy_res["allowed"] and registry_res["allowed"]:
             # Registry allowed something legacy explicitly blocked
             diff_class = "BUG"

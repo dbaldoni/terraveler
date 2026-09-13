@@ -17,7 +17,10 @@ async function sb(method: string, path: string): Promise<any> {
       "Content-Type": "application/json"
     }
   });
-  if (!r.ok) return [];
+  if (!r.ok) {
+    const body = await r.text().catch(() => "");
+    throw new Error(`Supabase query failed with status ${r.status}: ${body}`);
+  }
   const text = await r.text();
   return text ? JSON.parse(text) : [];
 }
