@@ -85,8 +85,10 @@ class StubCursor:
     def execute(self, sql, params=()):
         s = " ".join(sql.split()).lower()
         self._rows = []
-        if s.startswith("select verdict from reviews"):
-            self._rows = [(v,) for v in self.world["dossier"]]
+        if s.startswith("select r.verdict, r.reviewer_id"):
+            self._rows = list(self.world["reviewer_rows"])
+        elif s.startswith("select count(*) from reviews r2 join submissions s1"):
+            self._rows = [(1 if self.world["ring_detected"] else 0,)]
         elif s.startswith("update submissions set status"):
             self.rowcount = 0 if self.world["superseded"] else 1
             if self.rowcount:
@@ -123,8 +125,19 @@ class Stubbed:
     the assertions and the tamper test — see the same one."""
 
     def __init__(self, *, payload=PAYLOAD, dossier=("support", "support"),
+                 reviewer_rows=None, ring_detected=False,
                  superseded=False, unreachable=False, dry_run=False):
-        self.world = {"payload": payload, "dossier": list(dossier),
+        dossier = list(dossier)
+        if reviewer_rows is None:
+            # Established Scribes by default: thirty days old at review time
+            # and five reviews behind them — every existing test that does not
+            # care about reviewer identity keeps the answer it always got.
+            # Row shape mirrors the real query: (verdict, reviewer_id, rank,
+            # age_at_review_seconds, prior_reviews).
+            reviewer_rows = [(v, 100 + i, "scribe", 30 * 24 * 3600, 5)
+                             for i, v in enumerate(dossier)]
+        self.world = {"payload": payload, "dossier": dossier,
+                      "reviewer_rows": reviewer_rows, "ring_detected": ring_detected,
                       "superseded": superseded, "status": ROW["status"],
                       "spans_written": None, "audit": None}
         self.unreachable = unreachable
@@ -212,6 +225,52 @@ class Verdicts(unittest.TestCase):
         self.assertEqual(result.state.decision("verdict"), "escalate")
         self.assertEqual(s.world["status"], "peer-review")   # it did not move
         self.assertEqual(s.world["audit"]["action"], "review")
+
+    def test_a_dossier_of_fresh_accounts_with_no_history_is_escalated(self):
+        """The review-ring hardening probe: a long, unanimous dossier is
+        exactly what a ring of freshly self-enrolled accounts produces too,
+        and REVIEWS_TO_ADVANCE alone cannot tell the two apart."""
+        payload = {**PAYLOAD, "waypoints": PAYLOAD["waypoints"][:1]}
+        fresh = [("support", 1, "cabin-boy", 90, 0), ("support", 2, "cabin-boy", 45, 0)]
+        with Stubbed(payload=payload, dossier=("support", "support"),
+                    reviewer_rows=fresh) as s:
+            result = run(s)
+        self.assertEqual(result.state.decision("verdict"), "escalate")
+        self.assertEqual(s.world["status"], "peer-review")
+        self.assertIn("freshly-enrolled", result.state.fact("verdict_reason"))
+
+    def test_the_actual_review_ring_shape_is_caught(self):
+        """Pinned from a real run: three agents self-enrolled, each reviewed
+        two of the others' drafts, and by a reviewer's second review it
+        already had one prior review to its name — a strict prior_reviews==0
+        check would have missed exactly the ring it exists to catch."""
+        payload = {**PAYLOAD, "waypoints": PAYLOAD["waypoints"][:1]}
+        ring_shape = [("support", 42, "cabin-boy", 109.8, 1), ("support", 43, "cabin-boy", 110.0, 1)]
+        with Stubbed(payload=payload, dossier=("support", "support"),
+                    reviewer_rows=ring_shape) as s:
+            result = run(s)
+        self.assertEqual(result.state.decision("verdict"), "escalate")
+
+    def test_one_established_reviewer_is_enough_to_avoid_the_fresh_escalation(self):
+        """The signal is about the WHOLE dossier, not one reviewer — a single
+        Scribe with history vouching alongside a new account is the ordinary
+        case this must not block."""
+        payload = {**PAYLOAD, "waypoints": PAYLOAD["waypoints"][:1]}
+        mixed = [("support", 1, "cabin-boy", 90, 0), ("support", 2, "scribe", 30 * 24 * 3600, 5)]
+        with Stubbed(payload=payload, dossier=("support", "support"),
+                    reviewer_rows=mixed) as s:
+            result = run(s)
+        self.assertEqual(result.state.decision("verdict"), "approve")
+
+    def test_a_reviewer_ring_is_escalated_even_with_an_established_looking_dossier(self):
+        """Two reviewers can each be individually unremarkable and still form
+        a ring with the author — freshness is one signal, not the only one."""
+        payload = {**PAYLOAD, "waypoints": PAYLOAD["waypoints"][:1]}
+        with Stubbed(payload=payload, dossier=("support", "support"),
+                    ring_detected=True) as s:
+            result = run(s)
+        self.assertEqual(result.state.decision("verdict"), "escalate")
+        self.assertIn("reviewer ring", result.state.fact("verdict_reason"))
 
     def test_a_refuting_reviewer_outranks_every_mechanical_check(self):
         payload = {**PAYLOAD, "waypoints": PAYLOAD["waypoints"][:1]}

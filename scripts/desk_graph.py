@@ -133,14 +133,16 @@ SPEC = GraphSpec.from_dict({
         # is evidence for the verdict, not an afterthought to it.
         {"name": "read_dossier", "effect_class": "recorded_effect",
          "reads_declared": ["submission_id"],
-         "writes_declared": ["reviews_recorded", "reviews_refuting"]},
+         "writes_declared": ["reviews_recorded", "reviews_refuting",
+                             "reviewer_signals", "reviewer_ring_detected"]},
         # The one pure node, and the one that matters: it reads what the
         # checks recorded and issues the verdict. It does not know, and must
         # not know, which node runs next.
         {"name": "decide", "effect_class": "pure",
          "reads_declared": ["shape_findings", "source_findings",
                             "verbatim_findings", "stats", "reviews_recorded",
-                            "reviews_refuting", "submission_id"],
+                            "reviews_refuting", "reviewer_signals",
+                            "reviewer_ring_detected", "submission_id"],
          "writes_declared": ["findings", "findings_count", "verdict_reason"]},
         # The two ways a verdict is written down. They differ in exactly one
         # thing — whether the submission's status moves — which is why the
@@ -543,23 +545,59 @@ def make_nodes(cfg: DeskConfig):
                 .with_fact(Fact("sources_fetched", fetched, "check_verbatim", now)))
 
     def read_dossier(state: State, ctx) -> State:
+        """The dossier, and who is in it.
+
+        §10.4 says the editor rules with the dossier in hand — it does not say
+        the dossier is just a count. Three fresh accounts reviewing each
+        other's drafts satisfy REVIEWS_TO_ADVANCE exactly as well as three
+        Scribes do; the only difference is in who the reviewers are, which the
+        cardinality check cannot see and this query exists to fetch. Reviewer
+        age is measured AT THE TIME OF REVIEW, not now — an account that has
+        since aged is not evidence about how much history it had when it
+        vouched for this draft.
+        """
         sid = state.fact("submission_id")
         now = ctx.now()
         conn = cfg.connect()
         try:
             with conn.cursor() as cur:
-                cur.execute("select verdict from reviews where submission_id = %s", (sid,))
-                dossier = [r[0] for r in cur.fetchall()]
+                cur.execute(
+                    "select r.verdict, r.reviewer_id, c.rank, "
+                    "extract(epoch from (r.created_at - c.created_at)) as age_at_review_seconds, "
+                    "(select count(*) from reviews r2 where r2.reviewer_id = r.reviewer_id "
+                    " and r2.submission_id <> r.submission_id) as prior_reviews "
+                    "from reviews r join contributors c on c.id = r.reviewer_id "
+                    "where r.submission_id = %s", (sid,))
+                rows = cur.fetchall()
+                reviewer_ids = [row[1] for row in rows]
+                ring_detected = False
+                if reviewer_ids:
+                    # s1 is this submission's own author, joined in by id
+                    # rather than fetched separately first — one round trip
+                    # asks "did the author review one of their own reviewers".
+                    cur.execute(
+                        "select count(*) from reviews r2 "
+                        "join submissions s1 on s1.id = %s "
+                        "join submissions s2 on s2.id = r2.submission_id "
+                        "where r2.reviewer_id = s1.contributor_id "
+                        "and s2.contributor_id = any(%s)", (sid, reviewer_ids))
+                    ring_detected = cur.fetchone()[0] > 0
         finally:
             conn.close()
+        dossier = [row[0] for row in rows]
         refutes = dossier.count("refute")
+        signals = [{"reviewer_id": rid, "rank": rank,
+                    "age_at_review_seconds": age, "prior_reviews": prior}
+                   for _, rid, rank, age, prior in rows]
         ctx.record_effect(EffectDescriptor(
             effect_class=RECORDED,
             description=(f"read the review dossier for #{sid}: {len(dossier)} "
-                         f"recorded, {refutes} refuting")))
+                         f"recorded, {refutes} refuting, ring={ring_detected}")))
         return (state
                 .with_fact(Fact("reviews_recorded", len(dossier), "read_dossier", now))
-                .with_fact(Fact("reviews_refuting", refutes, "read_dossier", now)))
+                .with_fact(Fact("reviews_refuting", refutes, "read_dossier", now))
+                .with_fact(Fact("reviewer_signals", signals, "read_dossier", now))
+                .with_fact(Fact("reviewer_ring_detected", ring_detected, "read_dossier", now)))
 
     def decide(state: State, ctx) -> State:
         """The node the whole pass exists for, and the only pure one.
@@ -596,6 +634,25 @@ def make_nodes(cfg: DeskConfig):
             verdict = "escalate"
             why = ("mechanical checks passed but a reviewer refutes" if refutes
                    else "mechanical checks passed but the review dossier is short")
+
+        if verdict == "approve":
+            # The dossier was long enough and unanimous — but long enough by
+            # whom is exactly what a ring of fresh accounts can fake, and
+            # unanimous is what they would all say. Neither check above reads
+            # who is in the dossier; this one does.
+            signals = state.fact("reviewer_signals") or []
+            ring = state.fact("reviewer_ring_detected") or False
+            all_fresh = bool(signals) and all(
+                (sig["age_at_review_seconds"] or 0) < K.SUSPICIOUS_REVIEWER_AGE_SECONDS
+                and sig["prior_reviews"] < K.SUSPICIOUS_REVIEWER_PRIOR_REVIEWS
+                for sig in signals)
+            if ring or all_fresh:
+                f.escalate("desk", "DOSSIER_REVIEWER_RING" if ring else "DOSSIER_REVIEWERS_FRESH",
+                           recorded=recorded, submission_id=sid)
+                verdict = "escalate"
+                why = ("a reviewer ring: the author also reviewed one of its own reviewers"
+                       if ring else
+                       "every reviewer on the dossier is freshly-enrolled with no review history")
 
         state = (state
                  .with_fact(Fact("findings", f.rows, "decide", now))
